@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登月 DENGYUE 技术笔记</title>
+  <meta name="description" content="登月 DENGYUE 的客户端设置、连接排查与网络测量笔记。记录可复现的步骤、测试环境与适用范围。">
+  <link rel="canonical" href="https://chartai-official.github.io/dengyue-notes/">
+  <link rel="icon" href="icon.png" type="image/png">
+  <meta property="og:title" content="登月 DENGYUE 技术笔记">
+  <meta property="og:description" content="客户端设置 · 连接排查 · 网络测量。连接世界，一起登月。">
+  <meta property="og:image" content="https://chartai-official.github.io/dengyue-notes/header.png">
+  <meta property="og:url" content="https://chartai-official.github.io/dengyue-notes/">
+  <meta name="theme-color" content="#6554f5">
+  <style>
+    :root{color-scheme:light;--purple:#6554f5;--ink:#26213d;--muted:#696377;--line:#e8e3f4}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#faf9ff;color:var(--ink);font:17px/1.8 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:#5140d0;text-underline-offset:4px}a:hover{color:#33208e}header{background:white;border-bottom:1px solid var(--line)}.bar{max-width:1080px;margin:auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:14px;color:var(--ink);text-decoration:none;font-size:22px;font-weight:750}.brand img{width:54px;height:54px;border-radius:14px}nav{display:flex;gap:24px;flex-wrap:wrap;font-size:15px}main{max-width:1080px;margin:auto;padding:46px 24px 64px}.hero{border-radius:22px;overflow:hidden;background:var(--purple);color:#fff;margin-bottom:44px}.hero img{width:100%;height:auto;display:block}.intro{padding:26px 34px 34px}.eyebrow{font-size:13px;letter-spacing:.12em;margin:0 0 8px;color:#ddd8ff}h1{font-size:clamp(30px,4.2vw,46px);line-height:1.3;margin:0 0 15px}h2{font-size:27px;line-height:1.4;margin:38px 0 18px}h3{font-size:20px;margin:0 0 10px}p{margin:0 0 17px}.intro p:last-child{margin:0;color:#eeeaff;max-width:760px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card,article{background:white;border:1px solid var(--line);border-radius:16px;padding:25px}.card p{font-size:15px;color:var(--muted);margin:0}article{margin-top:20px}article h2{margin-top:0}table{width:100%;border-collapse:collapse;font-size:15px;margin:18px 0}th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line)}th{background:#f4f1ff;width:27%}.note{border-left:3px solid var(--purple);padding:10px 18px;background:#f5f2ff;font-size:15px}footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:28px 24px;text-align:center}footer p{margin:0 0 7px}@media(max-width:700px){.cards{grid-template-columns:1fr}.intro{padding:24px}.bar{gap:14px}main{padding-top:24px}th{width:33%}th,td{padding:10px}nav{gap:18px}}
+  </style>
+</head>
+<body>
+  <header><div class="bar"><a class="brand" href="./"><img src="icon.png" alt="登月火箭标志">登月 DENGYUE</a><nav aria-label="主导航"><a href="#notes">技术笔记</a><a href="#about">关于登月</a><a href="https://dengyue.xyz">登月官网</a></nav></div></header>
+  <main>
+    <section class="hero"><img src="header.png" alt="登月：连接世界，一起登月。dengyue.xyz"><div class="intro"><p class="eyebrow">DENGYUE · TECHNICAL NOTES</p><h1>把连接问题，写成清楚的步骤。</h1><p>记录客户端设置、连接故障排查与网络测量方法。每份笔记说明版本、环境和适用范围，让读者能判断是否适合自己的设备与网络。</p></div></section>
+    <section id="notes"><h2>我们记录什么</h2><div class="cards"><div class="card"><h3>客户端设置</h3><p>按设备、系统和客户端版本整理设置步骤，解释选项的用途和完成后的检查方法。</p></div><div class="card"><h3>连接排查</h3><p>从错误现象出发，记录检查顺序、尝试过的步骤和实际验证结果。</p></div><div class="card"><h3>网络测量</h3><p>保留测试条件与单位，区分延迟、传输速率、流量和长期运行表现。</p></div></div></section>
+    <article><h2>一份能复核的网络测试记录，应该包含什么？</h2><p>两个测试结果不一致时，先比较测试条件。时间、网络、协议或测试对象改变，都可能影响结果。只记录一个数字，通常无法解释差异。</p><table><tbody><tr><th scope="row">时间与环境</th><td>记录日期、时区、网络类型，以及有助于复现的宽泛地区；公开笔记避免暴露个人精确位置。</td></tr><tr><th scope="row">设备与版本</th><td>记录系统、客户端版本、连接模式，以及是否有其他任务占用网络。</td></tr><tr><th scope="row">测试方法</th><td>说明测量的是延迟还是传输速率，记录协议、持续时间、样本量和停止条件。</td></tr><tr><th scope="row">数值与单位</th><td>延迟标明 ms，速率区分 Mbps 与 MB/s，流量区分 GB 与 GiB。保留失败或超时样本。</td></tr><tr><th scope="row">对照与限制</th><td>用同一设备和测试方法保留对照。说明测试只代表哪些条件，以及尚未验证的范围。</td></tr></tbody></table><p class="note">单次或短时测试只代表当时的环境。它不能证明月度容量、所有地区表现或长期稳定性。发布记录时，不公开订阅链接、密钥、账号凭据和含有私人信息的日志。</p></article>
+    <article id="about"><h2>关于登月 DENGYUE</h2><p>连接世界，一起登月。</p><p>这里是登月的技术笔记站，整理操作方法与测量记录。第三方说法、场景假设和实际测试结果分别标注；结论随新证据更新。</p><p><a href="https://dengyue.xyz">登月官网</a> · <a href="https://x.com/dengyue_vpn">X 动态</a> · <a href="https://github.com/chartai-official/dengyue-notes">笔记源码</a></p><p>联系：<a href="mailto:support@dengyue.xyz">support@dengyue.xyz</a></p></article>
+  </main>
+  <footer><p>© 2026 登月 DENGYUE · 连接世界，一起登月。</p><p>客户端设置 · 连接排查 · 网络测量</p></footer>
+</body>
+</html>
