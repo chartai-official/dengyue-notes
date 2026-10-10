@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPLC 和 IEPL 有什么区别，买机场时需要关注什么 | 登月 DENGYUE 技术笔记</title>
+<meta name="description" content="IPLC 和 IEPL 都是运营商卖给企业的国际点对点专线，区别在接口和底层技术。对买机场的人来说，更重要的是专线只管中间一段、宣传难核实。">
+<link rel="canonical" href="https://dengyue.xyz/blog/iplc-iepl-difference/">
+<style>
+body{margin:0;background:#fbf8f1;color:#1f1b2e;font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
+a{color:#6554f5} h1{font-size:1.9em;line-height:1.3} h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto} th,td{border:1px solid #ddd6c8;padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:#efeafe;padding:10px 14px;border-radius:8px} nav a{margin-right:14px}
+@media (prefers-color-scheme: dark){body{background:#14121c;color:#ece8f6} th,td{border-color:#3a3550} .note{background:#262040} a{color:#a99cff}}
+</style>
+</head>
+<body><main>
+<nav><a href="../">登月技术笔记</a><a href="https://dengyue.xyz">登月官网</a></nav>
+<h1>IPLC 和 IEPL 有什么区别，买机场时需要关注什么</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/iplc-iepl-difference/">登月博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>IPLC 和 IEPL 都是运营商出租给企业的国际专线；IPLC 是传统传输电路，IEPL 提供以太网接口。买机场时更该关注的是：专线只管中间一段，而且你没法直接核实。</strong></p>
+<h3>两个词的全称和官方说法</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IPLC</th>
+<th>IEPL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全称</td>
+<td>International Private Leased Circuit，国际私用出租电路</td>
+<td>International Ethernet Private Line，国际以太网专线</td>
+</tr>
+<tr>
+<td>运营商怎么描述</td>
+<td>基于物理层传输资源、有保障带宽的端到端国际专线服务</td>
+<td>通过运营商网络提供的专用点对点连接</td>
+</tr>
+<tr>
+<td>底层技术</td>
+<td>SDH，带保护倒换</td>
+<td>以太网承载在 SDH（EoSDH）或 OTN（EoOTN）上</td>
+</tr>
+<tr>
+<td>给客户的接口</td>
+<td>透明传输通道，可承载数据、语音、视频</td>
+<td>标准以太网接口</td>
+</tr>
+<tr>
+<td>带宽档位</td>
+<td>从 E1/T1 到 STM64</td>
+<td>2Mbps 到 10Gbps</td>
+</tr>
+<tr>
+<td>拓扑</td>
+<td>点对点、点对多点</td>
+<td>点对点</td>
+</tr>
+<tr>
+<td>卖给谁</td>
+<td>跨国企业，附 SLA</td>
+<td>同左</td>
+</tr>
+</tbody>
+</table>
+<p>表中描述来自中国电信美洲公司（China Telecom Americas）的公开产品资料：IPLC 是一份产品手册（文件路径显示 2016 年上传），IEPL 是官网的以太网专线产品页（2026-10-11 核对）。其中 IEPL 页面还写到，客户之间有物理隔离。其他运营商的同名产品，具体档位和条款可能不同。</p>
+<p>用一句话区分：<strong>IPLC 卖的是一条电路，IEPL 卖的是一条接上就能用的以太网链路。</strong> 底层都是运营商的传输网，带宽都是专给这个客户的。</p>
+<h3>放到机场里，它们在哪一段</h3>
+<p>一条走专线的线路，大致是这样：</p>
+<p>你家宽带 → 入口服务器 → <strong>专线</strong> → 出口服务器 → 网站</p>
+<p>专线只覆盖中间那段。所以要分清两件事：</p>
+<ul>
+<li><strong>专线能保障的</strong>：入口到出口这一段的带宽是专给这个客户的，不和运营商的其他客户抢。</li>
+<li><strong>专线管不到的</strong>：你家到入口服务器那一段，仍然走普通宽带；出口服务器到网站那一段，仍然走公网。你家这一侧晚高峰拥堵，专线也帮不上。</li>
+</ul>
+<p>所以「专线机场」在体验上的表现，最终还是要看你自己晚高峰实测，而不是看名词。直连、中转、专线三种走法的完整比较，见<a href="https://dengyue.xyz/blog/direct-relay-dedicated/">直连、中转和专线机场怎么选</a>。</p>
+<h3>买机场时需要关注什么</h3>
+<p><strong>1. 名词核实不了，测试可以。</strong> IPLC、IEPL 的合同在服务商和运营商之间，用户看不到。宣传里写「IPLC 专线」，你能核实的只有结果：晚高峰延迟、最大延迟、丢包、下载速度。指标怎么看，见<a href="https://dengyue.xyz/blog/speedtest-buying-guide/">机场测速怎么看</a>。</p>
+<p><strong>2. 问清楚专线连的是哪两端。</strong> 入口在哪个城市或地区、出口在哪个国家。只说「专线」不说两端，等于没说。</p>
+<p><strong>3. 问清楚入口那一段是怎么接的。</strong> 专线前面那一段决定了你家到入口的体验，不同运营商的用户可能差别很大。</p>
+<p><strong>4. 别把 IPLC 和 IEPL 当成好坏排序。</strong> 从运营商资料看，两者是接口和底层技术不同，不是一个比另一个高级。机场选哪种，对你来说主要体现在价格和实测上。</p>
+<p><strong>5. 看价格是不是对得上。</strong> 专线按带宽向运营商租，是企业级产品。看到价格和直连服务差不多、又宣称专线的，问清楚专线具体覆盖哪一段、带宽多大、多少用户共用。我们手上没有可公开引用的专线报价，这里不给具体数字。</p>
+<h3>登月有没有专线</h3>
+<p>没有。登月的线路全部是<strong>直连</strong>：服务器在线路名所标的国家，你直接连过去，不经过入口服务器，也不走 IPLC 或 IEPL。我们用按运营商分线路、晚高峰分网实测的办法来弥补直连受运营商影响大的问题，比如「香港【电信直连】01 ×2」只对电信用户负责。</p>
+<p>如果你需要的是专线带来的那种中间段保障，登月不是这类产品。我们直连线路两晚晚高峰的判定汇总，见<a href="https://dengyue.xyz/blog/stable-vpn-selection/">稳定 VPN 推荐怎么看</a>；线路列表见<a href="https://dengyue.xyz/regions">线路页</a>；连接问题见<a href="https://dengyue.xyz/help">帮助中心</a>。</p>
+</main></body></html>
