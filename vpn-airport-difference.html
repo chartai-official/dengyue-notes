@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPN 和机场有什么区别：一个 App 还是一条订阅链接，哪种适合你 | 登月VPN 技术笔记</title>
+<meta name="description" content="商业 VPN 给自家 App 一键连接；机场给订阅链接，用通用客户端导入，很多还按电信、联通、移动标线路。从连接方式、协议、计费、分流和售后逐项比较。">
+<link rel="canonical" href="https://dengyue.xyz/blog/vpn-airport-difference/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>VPN 和机场有什么区别：一个 App 还是一条订阅链接，哪种适合你</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/vpn-airport-difference/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>VPN 和机场的区别在你拿到什么：商业 VPN 给自家 App，一键连接；机场给一条订阅链接，用 Clash、sing-box 等通用客户端导入。</strong></p>
+<p>前者省事，后者能按运营商挑线路。两者解决的是同一件事：把你的网络流量经过海外服务器转出去。区别主要在「谁做客户端」「用什么协议」「怎么卖」。</p>
+<h3>逐项比较</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>商业 VPN</th>
+<th>机场</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>你拿到什么</td>
+<td>账号密码，下载服务商的 App</td>
+<td>一条订阅链接</td>
+</tr>
+<tr>
+<td>客户端</td>
+<td>服务商自己开发，各平台一套</td>
+<td>通用客户端，第三方开发，同一个客户端可以导入不同服务商的订阅</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>标准 VPN 协议（如 WireGuard），或服务商自研的协议</td>
+<td>代理协议为主，订阅里写好，客户端自动识别</td>
+</tr>
+<tr>
+<td>节点选择</td>
+<td>在 App 里按国家选</td>
+<td>订阅里列出全部节点，名称通常标国家、线路类型、倍率</td>
+</tr>
+<tr>
+<td>分流</td>
+<td>部分 App 支持按应用排除</td>
+<td>客户端按规则分流，常见做法是国内网站直连、国外走代理</td>
+</tr>
+<tr>
+<td>计费</td>
+<td>常见按时间卖（月付、年付），具体看各家条款</td>
+<td>常见按流量卖，每月给一个额度，有的线路按倍率扣</td>
+</tr>
+<tr>
+<td>出问题找谁</td>
+<td>服务商，客户端和线路是同一家</td>
+<td>线路找服务商，客户端问题往往要看客户端自己的文档</td>
+</tr>
+<tr>
+<td>上手难度</td>
+<td>低</td>
+<td>中等，第一次要学会导入订阅、选节点</td>
+</tr>
+</tbody>
+</table>
+<p>几个说明：</p>
+<ul>
+<li><strong>「自研协议」的例子</strong>：ExpressVPN 在官网介绍 Lightway 是它自己设计的 VPN 协议，核心代码已开源（<a href="https://www.expressvpn.com/lightway">官方页面</a>，2026-10-11 核对）。WireGuard 则是公开的通用协议，官网自我描述是一种简单、快速、使用现代密码学的 VPN（<a href="https://www.wireguard.com/">wireguard.com</a>，2026-10-11 核对），很多 VPN 服务都支持它。</li>
+<li><strong>「通用客户端」的例子</strong>：sing-box 官网的自我描述是「通用代理平台」，提供 Android、Apple 平台和桌面的图形客户端（<a href="https://sing-box.sagernet.org/">sing-box.sagernet.org</a>，2026-10-11 核对）。Clash 系的 Clash Verge Rev、Windows 上的 v2rayN、Android 上的 v2rayNG 也属于这一类。</li>
+<li><strong>名字不一定对得上类型</strong>：有的机场也自称 VPN，有的 VPN 也提供订阅。判断类型看你拿到的是「一个 App」还是「一条订阅链接」。</li>
+</ul>
+<p>客户端怎么装、订阅怎么导入，这里不展开，各服务商的帮助页面会写。</p>
+<h3>机场的「订阅」带来什么</h3>
+<p>订阅链接是机场和商业 VPN 差别最大的地方。它有三个直接后果：</p>
+<ol>
+<li><strong>换服务商不用换客户端。</strong> 客户端是通用的，新订阅导入进去就行。反过来，客户端出了问题，不一定是线路的问题。</li>
+<li><strong>节点信息更细。</strong> 订阅里每个节点都有名字，很多机场会把国家、运营商、倍率写进名字。你能按自己的运营商挑线路，而不是只能选「日本」「新加坡」。</li>
+<li><strong>分流在你手里。</strong> 客户端按规则决定哪些网站走代理、哪些直连。国内网站直连，既省流量，也不会因为绕到海外而变慢。规则不对，也会出现「某个网站打不开」的情况。</li>
+</ol>
+<h3>哪种适合你</h3>
+<p><strong>更适合商业 VPN：</strong></p>
+<ul>
+<li>不想学任何设置，装上 App 就要能用。</li>
+<li>设备主要是一两台手机电脑，服务商的 App 都支持。</li>
+<li>不想算流量，更习惯按时间付费（买前仍要确认有没有流量或速度限制）。</li>
+</ul>
+<p><strong>更适合机场：</strong></p>
+<ul>
+<li>在中国大陆，晚高峰体验跟你的运营商关系很大，希望按电信、联通、移动选线路。</li>
+<li>想让国内网站直连、只有国外网站走代理。</li>
+<li>愿意第一次花点时间学会导入订阅和选节点。</li>
+<li>用量可以估算，愿意按流量付费。</li>
+</ul>
+<p><strong>上交易所、用 AI 工具的人还要多看一点：出口在哪个国家。</strong> 两种服务都能选出口地区，很多机场还会在线路名里同时写明国家和运营商，挑起来更直接。AI 工具按服务的官方支持地区选出口；交易所按交易所和运营商选线路，见 <a href="exchange-route-choice.html">交易所用户怎么选线路</a>。账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。</p>
+<p><strong>两种都替代不了的：</strong> 公司内网。访问公司内部系统要用公司给的 VPN。</p>
+<h3>选哪一种都要核对的事</h3>
+<p>不管是商业 VPN 还是机场，下面几件事都要自己核对：</p>
+<ul>
+<li>有没有中国大陆家庭宽带、晚上 8 点到 11 点的实测，是否按运营商分开。判断方法见 <a href="stable-vpn-selection.html">稳定 VPN 推荐怎么看</a>。</li>
+<li>有没有最短的月付，退款条件是否写清楚。买了以后怎么验证，见 <a href="trial-checklist.html">机场试用应该测什么</a>。</li>
+<li>同时在线设备数、流量额度、倍率、上传是否计入用量。</li>
+<li>你的每台设备上有没有能用的客户端；iOS 的部分客户端要另外付费。</li>
+</ul>
+<p>我们没有测过任何商业 VPN 在中国大陆的可用性，这篇不对具体的 VPN 品牌下结论。选具体服务时，用上面的清单逐项问；整体的选购顺序见 <a href="vpn-selection.html">VPN 怎么选：按用途、预算和设备缩小候选</a>。</p>
+<h3>登月VPN 属于哪一类</h3>
+<p>我们是登月VPN，属于机场这一类：你拿到的是订阅链接，用通用客户端导入。官网帮助中心按平台列出了推荐的客户端，Windows、macOS、Android 和 iOS 都有免费可用的选项（<a href="https://dengyue.xyz/help">帮助中心</a>，2026-10-11 核对）。线路名按运营商标注，例如「香港【电信直连】01 ×2」，「×2」表示这条线路按 2 倍扣流量。</p>
+<p>选线按你家宽带：电信选「电信直连」，联通选「联通直连」，移动选「移动直连」。</p>
+<p>如果你更想要「装上就用」的一键 App，登月VPN 目前不是这种形态。</p>
+<h3>下一步</h3>
+<ul>
+<li>看登月VPN 的套餐和价格：<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>主要上交易所的，按交易所和运营商选线路：<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
+<li>已经决定用机场，想知道各平台装什么客户端：<a href="https://dengyue.xyz/help">官网帮助中心</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

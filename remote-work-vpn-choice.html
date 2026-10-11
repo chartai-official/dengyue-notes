@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>远程办公 VPN 怎么选：开会不掉线，先看丢包和连续连接 | 登月VPN 技术笔记</title>
+<meta name="description" content="远程办公选网络，先看开会时的丢包和断线、上传够不够、工作时段能否连续几小时不掉；测速高不代表开会稳。附会议软件官方带宽、网络指标和测试方法。">
+<link rel="canonical" href="https://dengyue.xyz/blog/remote-work-vpn-choice/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>远程办公 VPN 怎么选：开会不掉线，先看丢包和连续连接</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/remote-work-vpn-choice/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>远程办公 VPN 怎么选？先看开会时丢不丢包、上传够不够、工作时段能否连续几小时不掉。</strong> 测速数字再高，开会照样可能断。</p>
+<p>先说明范围：访问公司内网要用公司给的 VPN，本文讲的是连接海外会议和办公服务时怎么选线路。</p>
+<h3>先分清两种「VPN」</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>公司 VPN</th>
+<th>跨境网络服务（商业 VPN、机场）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>解决什么</td>
+<td>从家里访问公司内部系统</td>
+<td>访问海外的会议、文档、邮件等服务</td>
+</tr>
+<tr>
+<td>谁提供</td>
+<td>公司 IT 部门</td>
+<td>你自己买</td>
+</tr>
+<tr>
+<td>能不能互相替代</td>
+<td>不能</td>
+<td>不能</td>
+</tr>
+</tbody>
+</table>
+<p>如果你的公司要求连公司 VPN 才能用内部系统，那是公司的规定，换任何线路都替代不了。下面只讨论第二种。</p>
+<h3>会议软件官方怎么说：丢包和延迟比带宽更要紧</h3>
+<p>微软在 Teams 的官方培训材料里写得很直接：带宽再高，延迟和丢包差，通话和会议的体验也会变差（<a href="https://learn.microsoft.com/en-us/training/modules/plan-optimize-network-performance-for-teams-phone-system/2-understand-teams-network-requirements">Microsoft Learn</a>，页面日期 2026-09-15，2026-10-11 核对）。同一页给出了从电脑到微软网络边缘、包括 Wi-Fi 在内整条路径的目标：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>微软给的目标（客户端到微软网络边缘）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>往返延迟</td>
+<td>低于 100ms</td>
+</tr>
+<tr>
+<td>丢包</td>
+<td>任意 15 秒内低于 1%</td>
+</tr>
+<tr>
+<td>突发丢包</td>
+<td>任意 200 毫秒内低于 10%</td>
+</tr>
+<tr>
+<td>抖动</td>
+<td>任意 15 秒内低于 30ms</td>
+</tr>
+</tbody>
+</table>
+<p>这是微软为企业网络定的目标，不是能不能开会的硬门槛，但它说明了一件事：<strong>开会对丢包的要求，比看网页严格得多。</strong></p>
+<p>几家会议软件的官方页面还提到两点，和选线路直接相关（均为 2026-10-11 核对）：</p>
+<ul>
+<li><strong>绕路会增加延迟。</strong> Google 的 Meet 网络准备页说，VPN 会增加延迟，可能导致 Meet 降低视频和音频质量（<a href="https://knowledge.workspace.google.com/admin/meet/prepare-your-network-for-meet-meetings-and-live-streams">Google Workspace 帮助</a>）。微软也建议企业让 Teams 流量绕开公司 VPN，原因之一是流量可能被送到离用户更远的接入点，带来更多延迟和抖动（<a href="https://learn.microsoft.com/en-us/microsoftteams/prepare-network">Teams 网络准备</a>）。</li>
+<li><strong>UDP 比 TCP 好。</strong> 微软说媒体流量强烈建议走 UDP，Teams 在 UDP 不可用时会退回 TCP，但会影响表现；Google 也说用 TCP 或经代理的 TCP 会降低会议质量。</li>
+</ul>
+<p>对选跨境线路的意义：<strong>线路离你近、晚高峰丢包低、支持 UDP 转发，开会才有基础。</strong> 是否支持 UDP，买之前问服务商。</p>
+<h3>带宽要多少：上传别忽略</h3>
+<table>
+<thead>
+<tr>
+<th>会议软件</th>
+<th>场景</th>
+<th>官方带宽（上行 / 下行）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zoom</td>
+<td>多人会议 720p</td>
+<td>2.6 Mbps / 1.8 Mbps</td>
+</tr>
+<tr>
+<td>Zoom</td>
+<td>多人会议 1080p</td>
+<td>3.8 Mbps / 3.0 Mbps</td>
+</tr>
+<tr>
+<td>Google Meet</td>
+<td>个人或小组织，720p</td>
+<td>最高 1.7 Mbps / 1.7 Mbps</td>
+</tr>
+<tr>
+<td>Microsoft Teams</td>
+<td>会议视频，推荐档</td>
+<td>2,500 kbps / 4,000 kbps</td>
+</tr>
+</tbody>
+</table>
+<p>来源：<a href="https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0060748">Zoom 系统要求</a>、Google Meet 和 Teams 同上，均为 2026-10-11 核对。</p>
+<p>几 Mbps 对家用宽带不算高，真正容易出问题的是<strong>晚高峰时跨境线路的上传和丢包</strong>。会议每小时会用掉多少流量，见 <a href="monthly-traffic-estimate.html">一个月需要多少流量</a>。</p>
+<h3>按工作内容拆需求</h3>
+<table>
+<thead>
+<tr>
+<th>工作内容</th>
+<th>最看重</th>
+<th>测的时候看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>视频会议</td>
+<td>丢包、抖动、连续连接</td>
+<td>开一场 30–60 分钟的真实会议，记掉线和画面冻结次数</td>
+</tr>
+<tr>
+<td>文档协作、邮件、即时通讯</td>
+<td>连接不断、断了能快速恢复</td>
+<td>开着一整个工作时段，看是否频繁提示重连</td>
+</tr>
+<tr>
+<td>上传大文件</td>
+<td>上传速度、流量额度</td>
+<td>传一个你平时会传的文件，看用时和是否中断</td>
+</tr>
+<tr>
+<td>共享屏幕、演示</td>
+<td>上传稳定</td>
+<td>共享 10 分钟，问对方画面是否卡</td>
+</tr>
+</tbody>
+</table>
+<h3>测试：工作时段和晚上都要覆盖</h3>
+<p>远程办公的人用网的时间和普通用户不同，测试也要跟着调整：</p>
+<ol>
+<li><strong>工作日白天测两三天</strong>，覆盖你真实的会议时段。</li>
+<li><strong>晚上 8 点到 11 点再测几晚</strong>，如果你会加班或和其他时区开会。晚高峰为什么重要、怎么按运营商判断，见 <a href="stable-vpn-selection.html">稳定 VPN 推荐怎么看</a>。</li>
+<li><strong>用真实会议测，不用测速软件代替。</strong> 记录每场会议的掉线次数、声音断续次数、恢复时间。</li>
+<li><strong>宽带和手机热点各测一次。</strong> 宽带出问题时，手机热点是常见的备用方案，要提前知道它行不行。</li>
+</ol>
+<h3>中断成本高的话，准备备用</h3>
+<p>一场重要会议中途断线，损失往往比多付一点钱大。可以考虑：</p>
+<ul>
+<li><strong>备用网络</strong>：手机热点、另一家运营商的宽带。</li>
+<li><strong>备用线路</strong>：同一个服务里，选一条不同地区或不同运营商的线路作为备用，提前测过。</li>
+<li><strong>会前检查</strong>：重要会议前 10 分钟先进会议室，确认音视频正常。</li>
+</ul>
+<h3>选购核对表</h3>
+<table>
+<thead>
+<tr>
+<th>核对项</th>
+<th>要的答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>你运营商的线路，晚高峰和工作时段有没有实测</td>
+<td>写清日期、时段、运营商，测了几晚</td>
+</tr>
+<tr>
+<td>是否支持 UDP 转发</td>
+<td>服务商明确回答</td>
+</tr>
+<tr>
+<td>上传是否计入流量，额度够不够</td>
+<td>按会议时长算过</td>
+</tr>
+<tr>
+<td>同时在线设备数</td>
+<td>电脑加手机至少 2 台</td>
+</tr>
+<tr>
+<td>有没有月付</td>
+<td>先用月付测完一两周</td>
+</tr>
+<tr>
+<td>出问题怎么联系</td>
+<td>工单或其他渠道，响应时间</td>
+</tr>
+</tbody>
+</table>
+<h3>登月VPN 适合开会吗</h3>
+<p>我们是登月VPN，下面是自报信息。</p>
+<p>登月VPN 的线路按电信、联通、移动分开标注，晚高峰按运营商分别测；你选和自己宽带一致的线路即可：电信选「电信直连」，联通选「联通直连」，移动选「移动直连」。我们的选线标准是丢包不超过 12.5%、没有 1 秒以上卡顿（判断方法见 <a href="stable-vpn-selection.html">稳定 VPN 推荐怎么看</a>）。这个标准是按看网页、看行情这类日常使用定的，和上面微软给企业会议定的目标不是一回事，我们也还没有用会议软件专门测过。</p>
+<p>如果你主要拿来开会，建议先买月付，按上面的方法在你的网络上开几场真实会议再决定。每个订阅最多同时在线 3 台设备，电脑加手机够用（<a href="https://dengyue.xyz/terms">服务条款</a>，2026-10-11 核对）。</p>
+<h3>下一步</h3>
+<ul>
+<li>看登月VPN 的套餐和价格：<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>白天开会、晚上还要看盘的，按交易所和运营商选线路：<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
+<li>客户端怎么装、订阅怎么导入：<a href="https://dengyue.xyz/help">官网帮助中心</a>。</li>
+<li>整体怎么挑服务：<a href="vpn-selection.html">VPN 怎么选</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

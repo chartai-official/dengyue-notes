@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>便宜机场怎么选：标价最低的，算完常常不是最便宜的 | 登月VPN 技术笔记</title>
+<meta name="description" content="便宜机场要按「每月实付 USDT ÷ 你真正用到的流量」比。账期折成每月、加上付款网络费、按倍率换算可用流量，再看预付风险，排名常常会变。附计算表。">
+<link rel="canonical" href="https://dengyue.xyz/blog/budget-airport-selection/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>便宜机场怎么选：标价最低的，算完常常不是最便宜的</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/budget-airport-selection/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>便宜机场怎么选？比每月实付多少 USDT、换来多少你用得到的流量。</strong> 把账期折成每月、加上付款网络费、按倍率换算可用流量，标价最低的那家，算完常常就不划算了。</p>
+<p>下面给一个算法、一张算例表，再列出便宜但不适合的几种情况。表里的价格全部是假设，用来演示算法，不对应任何一家真实的服务。</p>
+<h3>算法：两个数字</h3>
+<p><strong>1. 每月实付（USDT）</strong></p>
+<blockquote>
+<p>每月实付 = （套餐总价 + 每次付款的网络费）÷ 这次付款覆盖的月数</p>
+</blockquote>
+<p>USDT 付款时，钱包或交易所收的网络费、提币费不含在套餐价里，要单独加上。账期越短，付款次数越多，这笔费用的占比越高。网络费怎么核对，见 <a href="usdt-payment-cost.html">用 USDT 购买订阅，怎样核算手续费和实付</a>。</p>
+<p><strong>2. 每 GB 实际成本（USDT）</strong></p>
+<blockquote>
+<p>每 GB 实际成本 = 每月实付 ÷ 你每月实际用到的流量</p>
+</blockquote>
+<p>前提是套餐能覆盖你的用量。判断能不能覆盖时，要把倍率算进去：</p>
+<blockquote>
+<p>你能用的真实流量 = 套餐额度 ÷ 你常用线路的倍率</p>
+</blockquote>
+<p>一条按 2 倍扣量的线路，标 200GB 的套餐，全用这条线只能用 100GB。</p>
+<h3>算例：同一个人，三个假设套餐</h3>
+<p>假设你每月实际用 150GB，常用线路的倍率见表；假设每次付款的网络费和提币费合计 1 USDT。</p>
+<table>
+<thead>
+<tr>
+<th>套餐（假设）</th>
+<th>标价</th>
+<th>每月实付</th>
+<th>你能用的真实流量</th>
+<th>每月用 150GB 时每 GB 成本</th>
+<th>每月用 80GB 时每 GB 成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>甲：月付，100GB，1 倍</td>
+<td>6 USDT / 月</td>
+<td>7.00</td>
+<td>100GB</td>
+<td>不够用</td>
+<td>0.088</td>
+</tr>
+<tr>
+<td>乙：月付，300GB，常用线路 1.5 倍</td>
+<td>12 USDT / 月</td>
+<td>13.00</td>
+<td>200GB</td>
+<td>0.087</td>
+<td>0.163</td>
+</tr>
+<tr>
+<td>丙：年付，每月 200GB，1 倍，不结转</td>
+<td>108 USDT / 年</td>
+<td>9.08</td>
+<td>200GB</td>
+<td>0.061</td>
+<td>0.114</td>
+</tr>
+</tbody>
+</table>
+<p>计算过程：甲每月实付 6 + 1 = 7；乙 12 + 1 = 13，能用流量 300 ÷ 1.5 = 200GB；丙（108 + 1）÷ 12 ≈ 9.08。</p>
+<p>从这张表能看出三件事：</p>
+<ul>
+<li><strong>标价最低的甲，每月用 150GB 时根本不够用。</strong> 便不便宜，先看够不够。</li>
+<li><strong>同一个套餐，用量变了，排名也变。</strong> 每月只用 80GB 时，甲反而最省。</li>
+<li><strong>年付的丙每 GB 最低，但它有一个表里看不出的前提：服务要撑满 12 个月。</strong> 如果第 3 个月服务停了、又拿不到退款，你实际是花 109 USDT 用了 3 个月，折合每月约 36 USDT，比另外两个都贵。</li>
+</ul>
+<p>所以第三个数字也要看：<strong>一次预付了多少钱。</strong> 预付越多，你承担的风险越大。没用过的服务，先买月付。</p>
+<h3>除了价格，这些条款也决定真实成本</h3>
+<table>
+<thead>
+<tr>
+<th>条款</th>
+<th>为什么影响成本</th>
+<th>去哪找</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>倍率</td>
+<td>直接决定能用多少流量</td>
+<td>节点名称、套餐页、条款</td>
+</tr>
+<tr>
+<td>上传是否计入</td>
+<td>视频会议、上传文件时上传不小</td>
+<td>条款</td>
+</tr>
+<tr>
+<td>是否结转</td>
+<td>按月重置的套餐，没用完的作废</td>
+<td>套餐页</td>
+</tr>
+<tr>
+<td>重置日</td>
+<td>按购买日还是每月 1 号重置，影响第一个月能用多少</td>
+<td>套餐页、用户中心</td>
+</tr>
+<tr>
+<td>超额后怎么处理</td>
+<td>限速、停用还是要加购流量包，加购价往往不同</td>
+<td>条款、套餐页</td>
+</tr>
+<tr>
+<td>续费价格</td>
+<td>首单优惠后续费是否恢复原价</td>
+<td>套餐页、优惠说明</td>
+</tr>
+<tr>
+<td>同时在线设备数</td>
+<td>不够用就要多买一个订阅，成本翻倍</td>
+<td>条款</td>
+</tr>
+<tr>
+<td>退款</td>
+<td>决定预付的钱在服务出问题时能不能拿回来</td>
+<td>退款说明</td>
+</tr>
+</tbody>
+</table>
+<p>条款里找不到的项，可以发工单问，留下书面回复。</p>
+<h3>便宜但不适合你的几种情况</h3>
+<ul>
+<li><strong>晚高峰用不了。</strong> 再便宜，晚上 9 点打不开就是零价值。判断方法见 <a href="stable-vpn-selection.html">稳定 VPN 推荐怎么看</a>。</li>
+<li><strong>只有年付、没有月付。</strong> 没法先小额验证。</li>
+<li><strong>倍率、上传计费、设备数在条款里都没写。</strong> 算不出真实成本。</li>
+<li><strong>额度远超你的用量。</strong> 买 500GB 只用 50GB，每 GB 成本是标价算出来的 10 倍。用量怎么估，见 <a href="monthly-traffic-estimate.html">一个月需要多少流量</a>；用量小又不固定的，可以看看 <a href="usage-vs-monthly.html">按量付费和月付哪种适合</a>。</li>
+</ul>
+<h3>买之前的复核步骤</h3>
+<ol>
+<li>先估自己每月实际用多少流量，留 20%–30% 余量。</li>
+<li>列出两三个候选，用上面两个公式各算一遍，倍率按你最常用的线路算。</li>
+<li>把条款表里的八项逐项找到原文。</li>
+<li>只买月付，在自己的网络上晚上 8 点到 11 点测几晚。</li>
+<li>用得顺、用量也摸清了，再考虑长账期。</li>
+</ol>
+<h3>登月VPN 的情况</h3>
+<p>我们是登月VPN，下面是自报信息。</p>
+<p>登月VPN 目前只卖一档每月 500G 的套餐，有月付、半年付、年付，价格以 <a href="https://dengyue.xyz/pricing">套餐页</a> 为准。几项会影响你计算的条款，我们在官网写明了（2026-10-11 核对）：</p>
+<ul>
+<li>上传和下载都计入用量（<a href="https://dengyue.xyz/terms">服务条款</a>）；香港线路（线路名带「×2」）按 2 倍扣量，其余线路按 1 倍扣（<a href="https://dengyue.xyz/pricing">套餐页</a>）。</li>
+<li>每个服务月重置 500G，没用完的不结转（<a href="https://dengyue.xyz/pricing">套餐页</a>）。</li>
+<li>只收加密货币，用 USDT 付款，钱包网络费另计；付款和退款流程见 <a href="https://dengyue.xyz/refunds">付款、订单与退款</a>。</li>
+</ul>
+<p>如果你每月只用几十 GB，这档套餐对你偏大，按上面的公式算，每 GB 成本不会低。用量在几百 GB、比较稳定的，可以拿它和其他服务用同一个公式比一遍。</p>
+<h3>下一步</h3>
+<ul>
+<li>看登月VPN 的套餐和价格：<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>主要上交易所的，按交易所和运营商选线路：<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

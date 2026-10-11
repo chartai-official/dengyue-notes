@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>「AI 专用节点」值得加钱吗：哪些说法能核对，哪些不能 | 登月VPN 技术笔记</title>
+<meta name="description" content="用 AI 要的是出口在官方名单里、IP 固定，普通直连线路就能做到。「原生」「住宅」IP 能核对的只有登记、宣告网络和地理库三项。">
+<link rel="canonical" href="https://dengyue.xyz/blog/ai-ip-marketing/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>「AI 专用节点」值得加钱吗：哪些说法能核对，哪些不能</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/ai-ip-marketing/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>多数情况下不值得为标签加钱。</strong> 用 ChatGPT、Claude、Gemini，要的是两件事：出口地区在官方支持名单里，出口 IP 固定不乱跳。一条在日本、新加坡、韩国或台湾的固定 IP 直连线路就满足。</p>
+<p>至于「原生 IP」「住宅 IP」，能核对的只有登记信息、宣告网络和地理库定位三项，三者还可能互相矛盾。拿不出可核对证据的「AI 专用」，就只是一个标签。本文讲怎么核对宣传，不点名任何服务商。</p>
+<h3>用 AI 真正要看的两件事</h3>
+<ol>
+<li><strong>出口地区在名单里。</strong> 日本、新加坡、韩国、台湾同时在 OpenAI、Anthropic、Google（网页、App、API）的官方支持名单里（2026-10-11 核对）；香港不在 OpenAI、Anthropic 的名单里。三家名单对照见 <a href="ai-tools-network-choice.html">ChatGPT、Claude、Gemini 选哪个出口地区</a>。</li>
+<li><strong>出口固定。</strong> 一个固定 IP 比一个轮换的 IP 池更省心。账户和地区规则以平台为准，固定一个出口地区、少来回切换最稳妥。</li>
+</ol>
+<p>这两件事和「AI 专用」「原生」「住宅」这些标签没有必然关系。</p>
+<h3>宣传里常见的几个词</h3>
+<table>
+<thead>
+<tr>
+<th>说法</th>
+<th>通常想表达什么</th>
+<th>能核对的部分</th>
+<th>核对不了的部分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原生 IP</td>
+<td>IP 的登记国家和地理库定位的国家一致（也有人指服务器实际所在国）</td>
+<td>地址段在 RIR（如 APNIC、RIPE）的登记国家和机构</td>
+<td>我们没找到给「原生 IP」下定义的标准文件，各家用法不一</td>
+</tr>
+<tr>
+<td>住宅 IP</td>
+<td>IP 属于家庭宽带运营商</td>
+<td>地址段登记在哪家运营商名下；地理库把它归成什么类型</td>
+<td>地理库的分类各家不同，标签不是物理证明</td>
+</tr>
+<tr>
+<td>机房 IP</td>
+<td>IP 属于数据中心或云服务商</td>
+<td>登记机构、宣告它的网络（ASN）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>AI 专用 / AI 解锁</td>
+<td>用这个节点能用某个 AI 服务</td>
+<td>几乎没有：最多是「某天从这个出口打开过网页」</td>
+<td>平台以后的规则变化、你自己账号的状态</td>
+</tr>
+</tbody>
+</table>
+<p>IP 类型的概念解释，见 <a href="ip-type-choice.html">机房 IP、住宅 IP、原生 IP 有哪些区别</a>。</p>
+<h3>同一个 IP，三种来源可能给出三个答案</h3>
+<p>一个 IP 的「国家」至少有三种来源，它们互相独立：</p>
+<ol>
+<li><strong>登记信息</strong>：地址段在区域互联网注册机构（RIR）登记的机构和国家，用 whois 查。</li>
+<li><strong>宣告网络</strong>：实际在互联网上宣告这段地址的网络（ASN），它注册在哪个国家。</li>
+<li><strong>地理库定位</strong>：MaxMind、ipinfo 等商业数据库推算出的位置。</li>
+</ol>
+<p>地理库并不保证准确。MaxMind 的 <a href="https://support.maxmind.com/knowledge-base/articles/maxmind-geolocation-accuracy">Geolocation accuracy</a> 页面写道：</p>
+<blockquote>
+<p>"It is not possible for us to guarantee 100% geolocation accuracy."</p>
+</blockquote>
+<p>同一段还说，它们不保证和其他数据库的结果一致，因为可能用了不同的数据来源。另外，网络运营商可以自己发布「地理位置声明」，格式见 <a href="https://www.rfc-editor.org/rfc/rfc8805">RFC 8805</a>，文档说 Google 已经把这类声明纳入它的地理数据流程。也就是说，地理库的结果有一部分来自运营商自报。</p>
+<p><strong>举例</strong>：假设某段地址在 RIR 登记在 A 地一家公司名下，宣告它的网络注册在 B 地，地理库又把它定位在 C 城市。按登记看是 A，按地理库看是 C，三种说法都有出处，哪一个都不能单独当作「机房就在这里」的证明。</p>
+<p>所以，服务商给你一张「检测网站显示是 XX 国家 / 住宅 IP」的截图，只能说明某一个数据库在某一天的结果。</p>
+<h3>买之前可以问的五个问题</h3>
+<ol>
+<li>这个节点的出口 IP 段，登记在哪个机构、哪个国家？</li>
+<li>宣告它的网络（ASN）是哪家？</li>
+<li>是一个固定 IP，还是一个 IP 池轮换？出口会不会变？（相关概念见 <a href="dedicated-shared-ip.html">独享 IP 和共享 IP 怎么选</a>）</li>
+<li>「AI 专用」的依据是什么：有没有写明测试日期、测试了哪个服务、测试了几次？</li>
+<li>加价部分买的是什么：是更少人共用、更高带宽，还是只是标签？</li>
+</ol>
+<p>能回答 1、2、3 的，至少说明服务商自己知道 IP 的来历。第 4 题如果只有一句「已解锁」，没有日期和条件，参考价值很低。</p>
+<h3>登月VPN 怎么做</h3>
+<ul>
+<li>线路名按「国家【运营商直连】编号」写，例如 日本【联通直连】01，每条对外线路对应一个固定 IP，服务器就在线路名里的国家。</li>
+<li>线路名里不加「原生」「住宅」「AI」之类的标签：我们的规则是，只有核实过才加。</li>
+<li>用 AI 推荐日本、新加坡、韩国、台湾的线路，按宽带选：电信选新加坡【电信直连】01，联通选新加坡【联通直连】01、日本【联通直连】01 或韩国【联通直连】01，移动选韩国【移动直连】01。完整推荐表见 <a href="ai-tools-network-choice.html">ChatGPT、Claude、Gemini 选哪个出口地区</a>。</li>
+<li>美国【三网直连】01 是日常上网线路，不承诺 AI 用途。</li>
+</ul>
+<h3>下一步</h3>
+<ul>
+<li>需要固定出口做 API 白名单：见 <a href="static-ip-need.html">什么情况需要固定 IP</a>。</li>
+<li>看全部线路和价格：<a href="https://dengyue.xyz/regions">登月VPN 线路</a>、<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>客户端设置和报错：<a href="https://dengyue.xyz/help">官网帮助中心</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

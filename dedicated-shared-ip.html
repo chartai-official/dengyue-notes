@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>独享 IP 和共享 IP 怎么选：多数人用共享就够 | 登月VPN 技术笔记</title>
+<meta name="description" content="共享 IP 是多人用同一个出口，独享 IP 只给你一个人或一个组织用。日常上网共享就够；要做 IP 白名单、不想受别人影响，再考虑独享。">
+<link rel="canonical" href="https://dengyue.xyz/blog/dedicated-shared-ip/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>独享 IP 和共享 IP 怎么选：多数人用共享就够</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/dedicated-shared-ip/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>共享 IP 是很多人用同一个出口地址，独享 IP 只分给你或你的组织。看网页、视频、行情，共享就够；要设 IP 白名单、不想被别人牵连，才值得为独享多付钱。</strong></p>
+<p>这篇只讲「一个人用」和「多人用」的区别。IP 是机房还是住宅，见<a href="ip-type-choice.html">机房 IP、住宅 IP、原生 IP 有什么区别</a>；出口会不会变，见<a href="static-ip-need.html">什么情况需要固定 IP</a>。</p>
+<h3>先分清三个容易混的词</h3>
+<table>
+<thead>
+<tr>
+<th>说法</th>
+<th>问的是什么</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>共享 / 独享</td>
+<td>这个出口 IP 有几个人在用</td>
+<td>一条线路几十人共用，还是只有你</td>
+</tr>
+<tr>
+<td>固定 / 变动</td>
+<td>这个出口 IP 会不会经常换</td>
+<td>每次连上都是同一个地址，还是每次不同</td>
+</tr>
+<tr>
+<td>机房 / 住宅</td>
+<td>这个 IP 属于数据中心还是家庭宽带</td>
+<td>见上面链接的那篇</td>
+</tr>
+</tbody>
+</table>
+<p>三者互相独立。一个 IP 可以是共享但固定的，也可以是独享但会换的。卖家说「固定 IP」，不代表只有你在用。</p>
+<h3>共享 IP：便宜，但会受别人影响</h3>
+<p>共享 IP 的好处很直接：一台服务器、一个地址，分摊给很多用户，每个人分到的成本低。</p>
+<p>代价是别人的行为会算到这个 IP 头上。Google 在帮助页里解释「来自您网络的异常流量」提示时，列出的原因之一就是：和你用同一个 VPN 的其他人在发送自动化搜索（2026-10-11 核对）。同样的道理适用于其他按 IP 做风控的网站：同一个出口上有人刷接口、批量注册，大家都可能多弹几次验证码。</p>
+<p>如果你只是偶尔碰到验证码，换一条线路试试就行；同一个网站在几条线路上都频繁拦你，再往 IP 之外找原因。</p>
+<h3>独享 IP：只有你用，但要多花钱</h3>
+<p>独享 IP 的意思是这个地址只分给你。Proton VPN 的帮助页把它写得很清楚：专用 IP「只有你的组织能用」，不和任何人共享，在你租用期间归你的企业独占；页面提到 VPN Professional 等企业套餐可以自助开通专用服务器（2026-10-11 核对，页面没写价格）。</p>
+<p>独享 IP 解决的是两类问题：</p>
+<ol>
+<li><strong>IP 白名单。</strong> 有些服务只允许你登记过的 IP 访问，比如交易所 API、公司后台、远程服务器。白名单里写一个共享 IP，等于同一线路上的所有人都能通过 IP 这一关（他们仍然需要你的密钥或密码，但少了一道限制）。</li>
+<li><strong>不被别人牵连。</strong> 这个 IP 的「名声」只取决于你自己的使用方式。</li>
+</ol>
+<p>它解决不了的问题：线路晚高峰卡不卡。独享 IP 走的还是同一条线路，拥堵照样会拥堵。</p>
+<h3>怎么选：按你的用途对号入座</h3>
+<table>
+<thead>
+<tr>
+<th>你的情况</th>
+<th>建议</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>看网页、视频、社交、开会</td>
+<td>共享 IP</td>
+<td>独享带来的好处你基本用不上</td>
+</tr>
+<tr>
+<td>看行情、手动下单</td>
+<td>共享 IP，优先挑和你运营商对得上的线路</td>
+<td>影响体验的主要是延迟和断线，见<a href="speedtest-buying-guide.html">机场测速怎么看</a></td>
+</tr>
+<tr>
+<td>交易所 API、量化程序要设 IP 白名单</td>
+<td>独享 IP，或者自己租一台云服务器</td>
+<td>白名单的意义在于「只有你」</td>
+</tr>
+<tr>
+<td>公司后台只允许固定地址登录</td>
+<td>独享 IP</td>
+<td>共享 IP 让白名单形同虚设</td>
+</tr>
+<tr>
+<td>经常被验证码打扰</td>
+<td>先换线路、换时段对比；仍然频繁再考虑独享</td>
+<td>先确认问题出在 IP，而不是网络本身</td>
+</tr>
+</tbody>
+</table>
+<p>API 白名单的具体做法（云服务器还是固定出口线路），我们在<a href="exchange-api-ip-whitelist.html">交易所 API 白名单</a>里单独讲。</p>
+<h3>买独享 IP 之前问清楚这几件事</h3>
+<ul>
+<li><strong>是不是真的只给我一个人？</strong> 让卖家书面说明，别只看「独享」两个字。</li>
+<li><strong>IP 会不会换？什么情况下换？</strong> 被封、机器故障、续费中断，各自怎么处理，换之前会不会通知。</li>
+<li><strong>出口在哪个国家、归哪个 ASN？</strong> 买到后自己查一次。</li>
+<li><strong>价格怎么算？</strong> 是套餐自带，还是按月另付；到期不续，IP 是不是就收回了。</li>
+<li><strong>线路本身的晚高峰表现。</strong> 独享不改变线路质量，这一项照样要看实测。</li>
+</ul>
+<h3>登月VPN 是共享 IP</h3>
+<p>登月VPN 每条线路对应一个固定的出口 IP，由使用这条线路的多位用户共用，<strong>不是独享</strong>。我们目前也不单独出售独享 IP。</p>
+<p>这意味着：</p>
+<ul>
+<li>日常上网、看行情，按运营商选线就行（线路名里写着电信、联通或移动），用交易所的可以看<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
+<li>如果你要给交易所 API 设白名单，登月VPN 的固定出口能填进去，但它是共享的，白名单的保护作用比独享 IP 弱。认真跑量化的，更适合用自己独占 IP 的云服务器，做法见<a href="exchange-api-ip-whitelist.html">交易所 API 白名单</a>。</li>
+<li>「固定」指正常情况下出口不变，但不是永远不变：IP 在大陆连不上或服务器故障时，这条线路的出口 IP 可能更换。</li>
+</ul>
+<p>对多数看网页、看行情的人，共享的固定出口已经够用。全部线路见<a href="https://dengyue.xyz/regions">线路页</a>，价格见<a href="https://dengyue.xyz/pricing">套餐页</a>。客户端设置和连接问题请看<a href="https://dengyue.xyz/help">帮助中心</a>。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

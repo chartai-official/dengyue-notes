@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一个月需要多少流量：1 小时视频、1 小时会议各用多少 GB | 登月VPN 技术笔记</title>
+<meta name="description" content="每月流量主要看视频和视频会议的时长。按官方带宽换算，1 小时 1080p 视频约 2–3GB，1 小时视频会议约 0.7–3.2GB，上传也要算。附公式和算例。">
+<link rel="canonical" href="https://dengyue.xyz/blog/monthly-traffic-estimate/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>一个月需要多少流量：1 小时视频、1 小时会议各用多少 GB</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/monthly-traffic-estimate/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>一个月要多少流量，主要看视频和会议的时长。</strong> 按官方带宽换算，1 小时 1080p 视频约 2–3GB，1 小时视频会议约 0.7–3.2GB，上传也算；网页聊天要自己量。</p>
+<p>下面先给换算公式，再列各平台官方数字换算出来的每小时流量，最后用一个假设的使用习惯算一遍。</p>
+<h3>换算公式</h3>
+<p>平台给的数字一般是带宽（Mbps，每秒兆比特），要换成每小时多少 GB：</p>
+<blockquote>
+<p>每小时 GB = Mbps × 3600 秒 ÷ 8（比特换字节）÷ 1000（MB 换 GB）= <strong>Mbps × 0.45</strong></p>
+</blockquote>
+<p>例如 5 Mbps 满跑 1 小时，约 5 × 0.45 = 2.25GB。这里的 GB 按 1GB = 10 亿字节算。</p>
+<p>要注意：平台给的大多是「推荐带宽」或「最多用到」的数字，实际播放时画面简单、静止的部分会少用一些。所以下面换算出来的都是<strong>按官方推荐带宽满跑的上限估算</strong>，拿来规划流量偏保守，正好留出余量。</p>
+<h3>视频：每小时多少流量</h3>
+<p><strong>YouTube</strong>：官方帮助页按清晰度给出「推荐的持续网速」（<a href="https://support.google.com/youtube/answer/78358">YouTube 帮助</a>，2026-10-11 核对）。</p>
+<table>
+<thead>
+<tr>
+<th>清晰度</th>
+<th>官方推荐持续网速</th>
+<th>换算：每小时上限约</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4K</td>
+<td>20 Mbps</td>
+<td>9GB</td>
+</tr>
+<tr>
+<td>1080p</td>
+<td>5 Mbps</td>
+<td>2.25GB</td>
+</tr>
+<tr>
+<td>720p</td>
+<td>2.5 Mbps</td>
+<td>1.1GB</td>
+</tr>
+<tr>
+<td>480p</td>
+<td>1.1 Mbps</td>
+<td>0.5GB</td>
+</tr>
+<tr>
+<td>360p</td>
+<td>0.7 Mbps</td>
+<td>0.3GB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Netflix</strong>：官方帮助页直接给出了每台设备每小时最多用多少流量，不用换算（<a href="https://help.netflix.com/en/node/87">Netflix 帮助</a>，2026-10-11 核对）。</p>
+<table>
+<thead>
+<tr>
+<th>画质设置</th>
+<th>每小时最多</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低（基本画质）</td>
+<td>0.3GB</td>
+</tr>
+<tr>
+<td>中（标准画质）</td>
+<td>0.7GB</td>
+</tr>
+<tr>
+<td>高：标清</td>
+<td>1GB</td>
+</tr>
+<tr>
+<td>高：高清</td>
+<td>3GB</td>
+</tr>
+<tr>
+<td>高：超高清 4K</td>
+<td>7GB</td>
+</tr>
+</tbody>
+</table>
+<p>两个平台的数字口径不同（一个是推荐网速，一个是用量上限），不要混在一起取平均。你主要看哪个平台，就用哪个平台的数字。</p>
+<h3>视频会议：上传和下载都要算</h3>
+<p>会议和看视频不一样：你同时在上传自己的画面和声音。如果服务商把上传也计入用量，上下行要相加。</p>
+<table>
+<thead>
+<tr>
+<th>平台与场景</th>
+<th>官方带宽（上行 / 下行）</th>
+<th>换算：每小时上下行合计上限约</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zoom 多人会议，高质量视频</td>
+<td>1.0 Mbps / 600 kbps</td>
+<td>0.7GB</td>
+</tr>
+<tr>
+<td>Zoom 多人会议，720p</td>
+<td>2.6 Mbps / 1.8 Mbps</td>
+<td>2GB</td>
+</tr>
+<tr>
+<td>Zoom 多人会议，1080p</td>
+<td>3.8 Mbps / 3.0 Mbps</td>
+<td>3.1GB</td>
+</tr>
+<tr>
+<td>Google Meet，720p</td>
+<td>最高 1.7 Mbps / 1.7 Mbps</td>
+<td>1.5GB</td>
+</tr>
+<tr>
+<td>Google Meet，1080p</td>
+<td>最高 3.6 Mbps / 3.6 Mbps</td>
+<td>3.2GB</td>
+</tr>
+<tr>
+<td>Microsoft Teams 会议视频，推荐档</td>
+<td>2,500 kbps / 4,000 kbps</td>
+<td>2.9GB</td>
+</tr>
+<tr>
+<td>纯语音（三家）</td>
+<td>每个方向几十到 100 kbps</td>
+<td>不到 0.1GB</td>
+</tr>
+</tbody>
+</table>
+<p>来源（均为 2026-10-11 核对）：<a href="https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0060748">Zoom 系统要求</a>；<a href="https://knowledge.workspace.google.com/admin/meet/prepare-your-network-for-meet-meetings-and-live-streams">Google Meet 网络准备</a>（个人或小型组织的每位参与者带宽）；<a href="https://learn.microsoft.com/en-us/microsoftteams/prepare-network">Microsoft Teams 网络准备</a>。</p>
+<p>开会时关掉摄像头、只开语音，流量会降到很小。共享屏幕的流量也和画面变化多少有关，Zoom 给的纯共享屏幕（无视频缩略图）只要 50–75 kbps。</p>
+<h3>网页、聊天和 AI 工具：没有官方数字，自己量</h3>
+<p>网页、社交软件、AI 对话这类用途，没有可靠的官方每小时数字，网页里的图片和视频多少差别也很大。最准的办法是自己量：</p>
+<ol>
+<li>选一个普通的工作日，正常使用，<strong>不看视频、不开会</strong>。</li>
+<li>第二天看客户端或系统的流量统计（手机设置里一般能看到每个应用用了多少流量）。</li>
+<li>这一天的用量 × 30，就是这类用途的月用量。</li>
+</ol>
+<p>如果一天里也看了视频，就用总量减去按上面表格估的视频流量。</p>
+<h3>算例：一个假设的使用习惯</h3>
+<p>下面的使用习惯是假设的，换成你自己的时长即可。</p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>假设的时长</th>
+<th>每小时</th>
+<th>每月</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YouTube 1080p</td>
+<td>每天 1 小时</td>
+<td>2.25GB</td>
+<td>67.5GB</td>
+</tr>
+<tr>
+<td>Zoom 多人会议 720p，开摄像头</td>
+<td>每月 20 小时</td>
+<td>2GB</td>
+<td>约 40GB</td>
+</tr>
+<tr>
+<td>网页、聊天（按自己量的一天 0.3GB 算）</td>
+<td>每天</td>
+<td>—</td>
+<td>9GB</td>
+</tr>
+<tr>
+<td>合计</td>
+<td></td>
+<td></td>
+<td>约 116GB</td>
+</tr>
+<tr>
+<td>留 30% 余量</td>
+<td></td>
+<td></td>
+<td>约 150GB</td>
+</tr>
+</tbody>
+</table>
+<p>这个人买 150GB 左右额度的套餐就够；买 500GB 的话，大部分额度会在月底作废。</p>
+<h3>三件会让你的额度用得更快的事</h3>
+<ul>
+<li><strong>倍率。</strong> 有的线路按 1.5 倍、2 倍扣量。上面的 116GB 如果全部走 2 倍线路，会扣掉 232GB。</li>
+<li><strong>上传计入。</strong> 开会多、经常上传文件的人，上传不可忽视。看条款有没有写上传是否计入。</li>
+<li><strong>单位差异。</strong> 有的客户端按 1024 进位显示流量，同样的量会比按 1000 算的少显示约 7%。对账时看清楚两边用的是哪种单位。</li>
+</ul>
+<p>算出用量后，怎么选套餐：用量稳定的选月付，用量小或不固定的可以看流量包，详见 <a href="usage-vs-monthly.html">按量付费和月付机场，哪种适合自己的用量</a>；把倍率和付款网络费算进去比价，见 <a href="budget-airport-selection.html">便宜机场怎么选</a>。开会多的人，除了流量还要看丢包和连续连接，见 <a href="remote-work-vpn-choice.html">远程办公 VPN 怎么选</a>。</p>
+<h3>登月VPN 的计量规则</h3>
+<p>我们是登月VPN，下面是自报信息（2026-10-11 核对）：</p>
+<ul>
+<li>套餐页按 1GB = 1,000,000,000 字节计算；每个服务月重置，不结转（<a href="https://dengyue.xyz/pricing">套餐页</a>）。</li>
+<li>上传和下载都计入用量（<a href="https://dengyue.xyz/terms">服务条款</a>）；香港线路（线路名带「×2」）按 2 倍扣量，其余线路按 1 倍扣（<a href="https://dengyue.xyz/pricing">套餐页</a>）。</li>
+</ul>
+<p>登月VPN 目前只卖一档每月 500G 的套餐。按上面的算法估出来每月只要几十 GB 的人，这档对你偏大；每天看视频、开会多，或者全家几台设备一起用的，可以按算出来的用量对照一下。</p>
+<h3>下一步</h3>
+<ul>
+<li>看登月VPN 的套餐和价格：<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>主要上交易所的，按交易所和运营商选线路：<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

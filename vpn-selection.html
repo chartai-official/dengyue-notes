@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPN 怎么选：先定用途、预算和设备，3 步缩到两三家 | 登月VPN 技术笔记</title>
+<meta name="description" content="先定用途、每月预算和设备数，把候选缩到两三家，再用月付在晚高峰实测。附需求矩阵、三种常见情况的选法，以及交易所和 AI 用户该选哪里的线路。">
+<link rel="canonical" href="https://dengyue.xyz/blog/vpn-selection/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>VPN 怎么选：先定用途、预算和设备，3 步缩到两三家</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/vpn-selection/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>VPN 怎么选？先定三件事：主要做什么、每月预算多少 USDT、要在几台设备上同时用。</strong> 定下这三件事，候选通常只剩两三家，再用月付在晚高峰实测。</p>
+<p>很多人反过来做：先看榜单和测速截图，挑一家最便宜或最快的，买了才发现流量不够、设备超限，或者晚上根本用不顺。下面按顺序讲每一步定什么、核对什么。</p>
+<h3>第一步：按用途定「必须满足」的条件</h3>
+<p>用途决定你最该看哪项指标。同一家服务，拿来看网页够用，拿来开视频会议可能就不够。</p>
+<table>
+<thead>
+<tr>
+<th>主要用途</th>
+<th>最在意什么</th>
+<th>买之前先核对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>看网页、社交、查资料</td>
+<td>晚上能打开、不频繁断</td>
+<td>有没有 20:00–23:00 的实测，是否按电信、联通、移动分开测</td>
+</tr>
+<tr>
+<td>看视频</td>
+<td>下载速度、流量够不够</td>
+<td>晚高峰下载是否顺；按自己每天看几小时估流量</td>
+</tr>
+<tr>
+<td>视频会议、远程办公</td>
+<td>丢包、上传速度、连续几小时不断</td>
+<td>会议软件官方的带宽要求；你常用的时段</td>
+</tr>
+<tr>
+<td>AI 工具</td>
+<td>出口地区在 AI 服务的支持名单里</td>
+<td>选日本、新加坡、韩国、台湾等地区的线路；香港不在 OpenAI、Anthropic 的支持地区名单里</td>
+</tr>
+<tr>
+<td>交易所看盘</td>
+<td>晚高峰不断线、出口国家固定</td>
+<td>按你的运营商和要用的交易所选线路，固定用一个出口国家</td>
+</tr>
+</tbody>
+</table>
+<p>后两类除了网络本身，还要看<strong>出口在哪个国家</strong>。AI 工具按服务的官方支持地区选出口；交易所用户按交易所和运营商选，登月VPN 的推荐见 <a href="exchange-route-choice.html">交易所用户怎么选线路</a>。账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。</p>
+<p>「稳定」怎么判断，我们单独写过一篇：<a href="stable-vpn-selection.html">稳定 VPN 推荐怎么看</a>，核心是看晚高峰、按运营商分开看、连着测几晚。</p>
+<h3>第二步：按预算算每月真实花费</h3>
+<p>预算不要只看标价，要看「每月实际要付多少 USDT、换来多少能用的流量」。几个常被忽略的地方：</p>
+<ul>
+<li><strong>账期</strong>：年付折成每月更便宜，但要一次付 12 个月，服务中途停了就收不回。</li>
+<li><strong>倍率</strong>：有的线路按 1.5 倍、2 倍扣流量，标着 200GB，全用这类线路实际只能用 100–133GB。</li>
+<li><strong>上传也算</strong>：有的服务上传和下载都计入用量，开视频会议时上传不小。条款里没写清楚的，按都计入估算。</li>
+<li><strong>不结转</strong>：按月重置的套餐，这个月没用完的不会留到下个月。</li>
+<li><strong>付款网络费</strong>：用 USDT 付款时，钱包或交易所的网络费另付，不含在套餐价里。</li>
+</ul>
+<p>怎么把这些合成一个可比的数字，见 <a href="budget-airport-selection.html">便宜机场怎么选：比较真实月付总价</a>。流量要买多少，可以先按 <a href="monthly-traffic-estimate.html">网页、视频和会议分别估算</a>。</p>
+<h3>第三步：按设备看客户端和同时在线数</h3>
+<ul>
+<li><strong>同时在线台数</strong>：不少服务按订阅限制同时在线的设备数，条款里会写。手机、电脑、平板一起开，很快就到上限。家里多人共用要提前算。</li>
+<li><strong>客户端</strong>：机场通常不提供自家 App，而是让你用通用客户端导入订阅链接。各平台常用的客户端不同，iOS 上有免费的，也有要在 App Store 另外付费的。买之前看服务商的帮助页面，确认你的每台设备都有能用的客户端。</li>
+<li><strong>路由器</strong>：想让全家设备都走同一个订阅，要确认服务商是否提供路由器的说明，以及路由器本身能不能装对应的软件。</li>
+</ul>
+<p>商业 VPN 和机场在客户端上的区别比较大，分不清的话先看 <a href="vpn-airport-difference.html">VPN 和机场有什么区别</a>。</p>
+<h3>需求矩阵：把三步合在一起</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>轻度（网页、聊天）</th>
+<th>中度（每天看视频）</th>
+<th>工作（会议、协作）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首要指标</td>
+<td>晚高峰能打开</td>
+<td>晚高峰下载速度</td>
+<td>丢包、上传、连续连接</td>
+</tr>
+<tr>
+<td>流量</td>
+<td>小，先实际统计一周</td>
+<td>大，按每天看几小时算</td>
+<td>会议上下行都要算</td>
+</tr>
+<tr>
+<td>账期</td>
+<td>月付即可</td>
+<td>先月付，稳定后再考虑长账期</td>
+<td>先月付，覆盖工作日和晚上各测几天</td>
+</tr>
+<tr>
+<td>设备</td>
+<td>1–2 台</td>
+<td>电视、电脑、手机可能同时开</td>
+<td>电脑加手机，注意同时在线数</td>
+</tr>
+<tr>
+<td>不适合的选择</td>
+<td>为用不完的大流量包付钱</td>
+<td>只有白天测速数据的服务</td>
+<td>只看测速高低、不看丢包</td>
+</tr>
+</tbody>
+</table>
+<h3>三种常见情况怎么选</h3>
+<p><strong>情况一：一个人，主要晚上看视频，一两台设备。</strong> 重点是晚高峰下载和流量够不够。先估每月流量，选额度留 20%–30% 余量的套餐，买月付，在晚上 8 点到 11 点连测几晚，看视频清晰度能否稳定。</p>
+<p><strong>情况二：在家远程办公，白天开会、晚上偶尔加班。</strong> 重点是丢包和连续性，而不是测速最高值。工作时段和晚上都要测，至少开几场真实会议记录有没有掉线。注意：访问公司内网要用公司给的 VPN，这类需求不是普通线路服务能替代的。</p>
+<p><strong>情况三：全家共用，多台设备。</strong> 重点是同时在线台数和总流量。算清楚家里会同时开几台、每月合计多少流量；如果设备数超过单个订阅上限，要么买多个订阅，要么看路由器方案是否可行。</p>
+<h3>买之前最后核对一遍</h3>
+<ol>
+<li>用 AI 工具或交易所的，出口国家选好了吗？</li>
+<li>有没有你所在运营商、晚上 8 点到 11 点的实测？</li>
+<li>每月实付 USDT 和能用的流量，算过倍率、上传和网络费了吗？</li>
+<li>你的每台设备都有能用的客户端吗？同时在线数够吗？</li>
+<li>有没有最短的月付？退款条件写清楚了吗？</li>
+</ol>
+<p>最后一条最实际：<strong>没有你自己网络上的晚高峰数据之前，别直接买年付。</strong> 先买最短周期，用自己的网络测，比任何推荐都可靠。</p>
+<h3>登月VPN 适合谁、不适合谁</h3>
+<p>我们是登月VPN，下面是我们自己的情况，请当作服务商自报信息看。</p>
+<p>登月VPN 属于机场这一类：给订阅链接，用通用客户端导入；线路按电信、联通、移动分开标注；只收加密货币，用 USDT 付款；每个订阅最多同时在线 3 台设备（见<a href="https://dengyue.xyz/terms">服务条款</a>，2026-10-11 核对）。2026 年 10 月 10 日开卖，是新服务。</p>
+<p>比较适合：在中国大陆上交易所看盘交易、用 AI 工具或日常访问海外网站，能分清自己是哪个运营商、愿意用通用客户端、能用 USDT 付款的人。选线很简单：家里是电信就选「电信直连」，联通选「联通直连」，移动选「移动直连」。</p>
+<p>不太适合：</p>
+<ul>
+<li>每月只用几十 GB：我们目前只卖一档 500G 的套餐，对你来说偏大。</li>
+<li>想要一个装好就用、不用导入订阅的 App。</li>
+<li>不能用加密货币付款。</li>
+<li>人在海外：我们的线路是按中国大陆电信、联通、移动三家运营商选的。</li>
+</ul>
+<h3>下一步</h3>
+<ul>
+<li>看登月VPN 的套餐和价格，先买月付在自己网络上试：<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>主要上交易所的，按交易所和运营商选线路：<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
+<li>客户端怎么装、订阅怎么导入：<a href="https://dengyue.xyz/help">官网帮助中心</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

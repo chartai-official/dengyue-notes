@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iPhone VPN 怎么选：协议、客户端和额外费用 | 登月VPN 技术笔记</title>
+<meta name="description" content="iPhone 用订阅式机场，要配支持对应协议的第三方客户端。常用的四款在大陆区 App Store 搜不到，有的免费、有的一次性付费。附价格表。">
+<link rel="canonical" href="https://dengyue.xyz/blog/iphone-vpn-choice/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>iPhone VPN 怎么选：协议、客户端和额外费用</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/iphone-vpn-choice/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>iPhone 上用订阅式服务，要另装支持该协议的第三方客户端。我们 2026-10-11 查的四个常用客户端，大陆区 App Store 都搜不到；有的免费，有的一次性付费。</strong></p>
+<p>这篇讲选型：客户端要不要钱、在哪个商店能下、支不支持你买的协议、后台和耗电怎么核对。安装和导入步骤不在这里写，见<a href="https://dengyue.xyz/help">帮助中心</a>。</p>
+<h3>先分清两种形态</h3>
+<table>
+<thead>
+<tr>
+<th>形态</th>
+<th>怎么用</th>
+<th>你要关心什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自带 App 的 VPN</td>
+<td>下载服务商自己的 App，登录就能用</td>
+<td>这个 App 在你所用的 App Store 地区有没有上架</td>
+</tr>
+<tr>
+<td>订阅链接 + 第三方客户端</td>
+<td>服务商给你一个订阅链接，导入 Karing、Shadowrocket 这类客户端</td>
+<td>客户端支不支持服务商的协议、要不要付费、在哪个地区能下载</td>
+</tr>
+</tbody>
+</table>
+<p>登月VPN 属于第二种。</p>
+<p>为什么上架地区是个问题：Apple 的 App 审核指南第 5.4 条规定，提供 VPN 服务的 App 必须使用系统的 NEVPNManager 接口，只能由以组织身份注册的开发者提供，不得违反当地法律；如果开发者选择在要求 VPN 许可的地区上架，必须在审核备注里提供许可信息（2026-10-11 核对）。另一方面，我们 2026-10-11 用 Apple 官方查询接口核对，下文四个客户端在美区、香港区、日本区都能查到，在中国大陆区都查不到。</p>
+<h3>登月VPN 官网列出的四个 iPhone 客户端</h3>
+<p>登月VPN 的线路使用 <strong>VLESS + REALITY</strong> 协议，客户端必须支持它。官网帮助中心目前为 iPhone / iPad 列出了 Karing、Shadowrocket、Quantumult X 和 sing-box。</p>
+<p>下面是我们 2026 年 10 月 11 日用 Apple 官方查询接口和 App Store 页面核对的结果：</p>
+<table>
+<thead>
+<tr>
+<th>客户端</th>
+<th>美区价格</th>
+<th>中国大陆区</th>
+<th>iOS 最低版本</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Karing</td>
+<td>免费</td>
+<td>搜不到</td>
+<td>15.0</td>
+<td>帮助中心的推荐项</td>
+</tr>
+<tr>
+<td>sing-box</td>
+<td>免费</td>
+<td>搜不到</td>
+<td>15.0</td>
+<td>官方文档写明需要「中国大陆以外的 Apple 账户」；App Store 上的名称是 sing-box MT</td>
+</tr>
+<tr>
+<td>Shadowrocket</td>
+<td>2.99 美元</td>
+<td>搜不到</td>
+<td>13.0</td>
+<td>一次性付费</td>
+</tr>
+<tr>
+<td>Quantumult X</td>
+<td>9.99 美元</td>
+<td>搜不到</td>
+<td>15.0</td>
+<td>一次性付费</td>
+</tr>
+</tbody>
+</table>
+<p>几点说明：</p>
+<ul>
+<li><strong>价格按地区不同。</strong> 同一天，Shadowrocket 在香港区是 22 港元、日本区 500 日元；Quantumult X 在香港区 88 港元、日本区 1500 日元。以你所用地区的 App Store 页面为准。</li>
+<li><strong>美元价格只是 App Store 标价。</strong> Apple 不收 USDT，按 1:1 粗算约等于同额 USDT，实际以你的付款方式结算为准。</li>
+<li><strong>内购以页面为准。</strong> 我们核对时，这四个 App Store 页面上都没有显示内购清单；以后有没有，以你下载时的页面为准。</li>
+<li><strong>「官网列出」不等于「逐版验证过」。</strong> 客户端会更新，界面和兼容性可能变化。我们会持续核对，遇到问题请按帮助中心的说明操作。</li>
+</ul>
+<h3>选客户端，看这四项</h3>
+<p><strong>1. 协议。</strong> 先确认服务商用什么协议，再看客户端支不支持。举个反例：Surge 是一款常见的 iPhone 网络工具，但它的官方文档里列出的代理协议没有 VLESS，也没有 REALITY（2026-10-11 核对），所以不能用来连登月VPN。我们因此把它从官网推荐里撤了下来。</p>
+<p><strong>2. 费用。</strong> 免费的 Karing、sing-box 够用；Shadowrocket、Quantumult X 是一次性付费。付费不代表连接更快，快慢主要看线路本身。如果你已经买过其中一款，继续用就行。</p>
+<p><strong>3. 下载地区。</strong> 这四个客户端在大陆区 App Store 都搜不到，需要用其他国家或地区的 Apple 账户下载。Apple 的帮助页说明，更改账户地区前要先花完账户余额、取消会阻止更改的订阅，并准备好新地区可用的付款方式（2026-10-11 核对）。付费客户端要用对应地区的付款方式买，这一点会影响你选免费还是付费的。</p>
+<p><strong>4. 系统版本。</strong> 表里的最低版本是 App Store 页面上写的。旧 iPhone 升不到 iOS 15，选择就只剩支持更老系统的那一款。</p>
+<h3>后台和耗电怎么核对</h3>
+<p>iPhone 上这类客户端都通过系统的 VPN 配置工作，连上后状态栏会出现 VPN 标志。至于哪个客户端更省电，我们<strong>没有做过对比测试</strong>，这里不下结论。</p>
+<p>你可以自己看：打开「设置」→「电池」，点「查看所有电池用量」，能看到过去 8 天各 App 的耗电占比（Apple 帮助页，2026-10-11 核对）。正常用两三天后看一眼，客户端的占比明显偏高，可以换一个试试。</p>
+<p>后台断连也一样，以你自己的记录为准：锁屏放半小时再打开，看是否还连着、行情和消息是否正常推送。</p>
+<h3>iPhone 和电脑一起用，要买两份吗</h3>
+<p>不一定，要看服务商的同时在线设备数。登月VPN 的 500G 套餐写明<strong>最多 3 台设备同时在线</strong>（2026-10-11 套餐页），iPhone、电脑、iPad 同时用不需要买两份。买别家之前，同样先看这一条。电脑端怎么选，见<a href="desktop-vpn-choice.html">电脑 VPN 怎么选</a>。</p>
+<h3>买之前的核对清单</h3>
+<ul>
+<li>服务商用什么协议？你想用的客户端支不支持？</li>
+<li>客户端在你的 App Store 地区能不能下载，要不要付费？</li>
+<li>你的 iOS 版本够不够？</li>
+<li>套餐允许几台设备同时在线？</li>
+<li>有没有月付或试用，让你先在 iPhone 上用几个晚上？</li>
+</ul>
+<p>还没决定买哪种服务，可以先看<a href="vpn-selection.html">VPN 怎么选</a>。登月VPN 的 500G 套餐一份订阅可在 iPhone、电脑等最多 3 台设备同时用，线路按电信、联通、移动分开，选和你宽带一致的那条，按交易所选线见<a href="exchange-route-choice.html">交易所用户怎么选线路</a>；价格见<a href="https://dengyue.xyz/pricing">套餐页</a>，iPhone 上的导入步骤见<a href="https://dengyue.xyz/help">帮助中心</a>。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>按量付费还是月付机场：一个公式算出哪种更省 | 登月VPN 技术笔记</title>
+<meta name="description" content="用量稳定、每月能用掉大半额度，月付更划算；每月只用几十 GB 或忽多忽少，流量包通常更省，但有预付风险。用假设数字和一个公式算给你看。">
+<link rel="canonical" href="https://dengyue.xyz/blog/usage-vs-monthly/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>按量付费还是月付机场：一个公式算出哪种更省</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/usage-vs-monthly/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>按量付费还是月付？用量稳定、每月能用掉大半额度，选月付；每月只用几十 GB 或忽多忽少，不限时流量包通常更省，但要承担预付风险。</strong></p>
+<p>分界线在哪，取决于两边的具体价格。下面用假设数字和一个公式演示怎么算，换成你看到的真实价格就能用。</p>
+<h3>两种计费方式的区别</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>月付（周期套餐）</th>
+<th>按量（流量包）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>买到什么</td>
+<td>每个服务月一个固定额度</td>
+<td>一次买一定数量的流量</td>
+</tr>
+<tr>
+<td>没用完的</td>
+<td>到重置日作废，不结转</td>
+<td>留着，用完为止</td>
+</tr>
+<tr>
+<td>有效期</td>
+<td>按账期，月付、季付、年付</td>
+<td>有的写「不限时」，有的写有效期，过期作废，要看条款</td>
+</tr>
+<tr>
+<td>一次付多少</td>
+<td>一个账期的钱</td>
+<td>一个流量包的钱</td>
+</tr>
+<tr>
+<td>服务停了损失多少</td>
+<td>当前账期剩下的部分</td>
+<td>流量包里没用完的全部</td>
+</tr>
+<tr>
+<td>适合</td>
+<td>用量稳定、偏大</td>
+<td>用量小、不固定</td>
+</tr>
+</tbody>
+</table>
+<p>「按量付费」在不同服务商那里叫法不一，有的叫「不限时套餐」「流量包」「按需」。判断方式只看一点：<strong>没用完的流量会不会在月底清零。</strong></p>
+<h3>算例：同样一年，不同用量</h3>
+<p>下面的价格全部是假设，只为演示算法，不对应任何一家真实的服务。</p>
+<ul>
+<li>月付（假设）：8 USDT / 月，每月 200GB，不结转。</li>
+<li>流量包（假设）：30 USDT 买 500GB，不限时，用完为止。</li>
+<li>每次付款的网络费和提币费（假设）：合计 1 USDT。</li>
+</ul>
+<p>月付一年付 12 次，一年 12 ×（8 + 1）= 108 USDT，用多用少都是这个数（只要每月不超过 200GB）。</p>
+<p>流量包一年要买几个，取决于一年用多少：</p>
+<table>
+<thead>
+<tr>
+<th>每月用量</th>
+<th>一年合计</th>
+<th>月付一年</th>
+<th>流量包一年要买</th>
+<th>流量包一年花费</th>
+<th>流量包剩余（留到下一年）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30GB</td>
+<td>360GB</td>
+<td>108</td>
+<td>1 个</td>
+<td>31</td>
+<td>140GB</td>
+</tr>
+<tr>
+<td>50GB</td>
+<td>600GB</td>
+<td>108</td>
+<td>2 个</td>
+<td>62</td>
+<td>400GB</td>
+</tr>
+<tr>
+<td>100GB</td>
+<td>1,200GB</td>
+<td>108</td>
+<td>3 个</td>
+<td>93</td>
+<td>300GB</td>
+</tr>
+<tr>
+<td>150GB</td>
+<td>1,800GB</td>
+<td>108</td>
+<td>4 个</td>
+<td>124</td>
+<td>200GB</td>
+</tr>
+<tr>
+<td>200GB</td>
+<td>2,400GB</td>
+<td>108</td>
+<td>5 个</td>
+<td>155</td>
+<td>100GB</td>
+</tr>
+</tbody>
+</table>
+<p>流量包一年花费 = 买的个数 ×（30 + 1）。</p>
+<p>如果把剩余流量折算回去，只按实际用掉的部分算钱（每 GB 30 ÷ 500 = 0.06 USDT，另加每次付款 1 USDT），分界大约在每月 145GB：</p>
+<blockquote>
+<p>0.06 × 12 × 每月用量 + 每年付款次数 × 1 = 108</p>
+</blockquote>
+<p>低于这个用量，流量包更省；高于它，月付更省。换成你看到的真实价格，用同一个式子算一遍就知道。</p>
+<p><strong>每月只用 30–50GB 的人</strong>，在这组假设下流量包一年花 31–62 USDT，月付要 108 USDT。如果你找到的月付套餐额度和你的用量接近（比如月付额度只有 50GB 左右），差距会小很多，所以要拿真实价格算，不要只看「按量」「月付」这两个字。</p>
+<h3>用量不稳定时差别更大</h3>
+<p>假设你平时每月 30GB，但有两个月出差或赶项目，每月用到 250GB。一年合计 10 × 30 + 2 × 250 = 800GB。</p>
+<ul>
+<li>流量包：买 2 个，62 USDT，还剩 200GB。</li>
+<li>月付 200GB：平时每月只用 30GB，余量全部作废；那两个月又不够，要升级或加购，一年至少 108 USDT，再加上加购的钱。</li>
+</ul>
+<p>忽高忽低的用量，是流量包最有优势的情况。</p>
+<h3>流量包的风险：预付和服务存续</h3>
+<p>流量包的账，前提是服务一直在。上面每月 50GB 的例子里，年底手上还有 400GB 没用；如果服务这时停了，这 400GB 按买价值 24 USDT，大概率拿不回来。月付最多损失当前这个月。</p>
+<p>所以买流量包前多核对三件事：</p>
+<ol>
+<li><strong>有没有有效期。</strong> 写着「不限时」的，看条款有没有「服务终止后余量作废」之类的说明。</li>
+<li><strong>退款怎么算。</strong> 流量包用了一部分后能不能退，按什么比例。</li>
+<li><strong>一次别买太多。</strong> 按自己一两个季度的用量买，用完再买，多付一次网络费，换来更小的预付风险。</li>
+</ol>
+<h3>两种都要核对的条款</h3>
+<ul>
+<li>倍率：按 2 倍扣量的线路，流量包和月付额度都会消耗得更快。</li>
+<li>上传是否计入用量。</li>
+<li>超额后是限速、停用还是需要加购。</li>
+<li>月付的重置日：按购买日还是每月固定日期。</li>
+</ul>
+<p>用量怎么估，见 <a href="monthly-traffic-estimate.html">一个月需要多少流量：按网页、视频和会议估算</a>；把网络费、倍率都算进去的完整比价方法，见 <a href="budget-airport-selection.html">便宜机场怎么选：比较真实月付总价</a>。</p>
+<h3>怎么决定</h3>
+<ol>
+<li>先用一两个月记录自己的真实用量，看平均值和最高值。</li>
+<li>平均用量稳定、接近某个月付套餐额度的大半：选月付。</li>
+<li>平均用量小，或者最高值是平均值的好几倍：选流量包，一次只买一两个季度的量。</li>
+<li>不管选哪种，第一次都买最小的单位，按 <a href="trial-checklist.html">试用清单</a> 在晚高峰测过再加量。</li>
+</ol>
+<h3>登月VPN 的情况</h3>
+<p>我们是登月VPN，下面是自报信息。登月VPN 目前只卖一档每月重置 500G 的周期套餐，有月付、半年付、年付，没有按量流量包；没用完的流量不结转（<a href="https://dengyue.xyz/pricing">套餐页</a>，2026-10-11 核对）。</p>
+<p>每月只用 30–50GB 的人，这档套餐对你偏大，按上面的算法不会是最省的选择。每月用量在几百 GB、比较稳定的人，可以拿它和其他服务用同一个公式比较。</p>
+<h3>下一步</h3>
+<ul>
+<li>看登月VPN 的套餐和价格：<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>主要上交易所的，按交易所和运营商选线路：<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

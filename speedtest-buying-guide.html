@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>机场测速怎么看：延迟、抖动、丢包和下载速度分别说明什么 | 登月VPN 技术笔记</title>
+<meta name="description" content="延迟看响应快慢，抖动和卡顿看稳不稳，丢包看会不会断，下载速度看大文件和视频。附 Mbps 与 MB/s 换算、三个举例和自测步骤。">
+<link rel="canonical" href="https://dengyue.xyz/blog/speedtest-buying-guide/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>机场测速怎么看：延迟、抖动、丢包和下载速度分别说明什么</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/speedtest-buying-guide/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>测速结果要拆开看：延迟看响应快不快，抖动和卡顿看稳不稳，丢包看会不会断，下载速度看视频和下载顺不顺。一张「延迟 50ms」的截图只证明了其中一项。</strong></p>
+<p>下面先解释每个指标和单位，再用三个假设的例子说明为什么要分开看，最后给出自己测的步骤。</p>
+<h3>四个指标各管什么</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>单位</th>
+<th>测的是什么</th>
+<th>影响哪些使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>延迟</td>
+<td>毫秒（ms）</td>
+<td>一个包发出去再收到回应要多久</td>
+<td>网页打开、点按钮后的反应、看行情的推送速度</td>
+</tr>
+<tr>
+<td>抖动</td>
+<td>毫秒（ms）</td>
+<td>延迟忽高忽低的程度</td>
+<td>视频会议、语音通话、实时行情</td>
+</tr>
+<tr>
+<td>丢包</td>
+<td>百分比（%）</td>
+<td>发出去的包有多少没回来</td>
+<td>连接中断、视频卡住、需要重连</td>
+</tr>
+<tr>
+<td>下载速度</td>
+<td>Mbps 或 MB/s</td>
+<td>单位时间能收多少数据</td>
+<td>视频清晰度、下载文件、更新软件</td>
+</tr>
+</tbody>
+</table>
+<p>「抖动」这个词，标准文档里更常叫「延迟变化」。IETF 的 RFC 3393 定义的「IP 包延迟变化」（IPDV），是所选数据包单向延迟之间的差值；文档还专门说明，它会尽量避免用「抖动」这个词，因为「延迟变化」更准确。实际看测速时，你只要记住：<strong>平均延迟低，不代表每个包都快。</strong></p>
+<p>我们自己还单独看一项「卡顿」：只要有一次延迟到了 1 秒以上，就记为卡顿。这对看行情、开会的影响，比平均值高几十毫秒大得多。</p>
+<h3>单位换算：Mbps 和 MB/s 差 8 倍</h3>
+<p>宽带套餐写的「100M」是 100Mbps（兆比特每秒）；下载软件显示的「12MB/s」是兆字节每秒。1 字节 = 8 比特，所以：</p>
+<table>
+<thead>
+<tr>
+<th>Mbps</th>
+<th>约等于 MB/s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>50</td>
+<td>6.25</td>
+</tr>
+<tr>
+<td>100</td>
+<td>12.5</td>
+</tr>
+<tr>
+<td>300</td>
+<td>37.5</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>125</td>
+</tr>
+</tbody>
+</table>
+<p>两个容易踩的坑：</p>
+<ul>
+<li><strong>MB 和 MiB 不一样。</strong> 1MB = 1,000,000 字节，1MiB = 1,048,576 字节。登月VPN 套餐页按 1 GB = 1,000,000,000 字节计算流量。</li>
+<li><strong>测速网站的数字是理想值。</strong> 你的宽带是 100Mbps，代理后的速度也不会超过 12.5MB/s，再扣掉线路和服务器的损耗。</li>
+</ul>
+<h3>我们选线路时用的标准</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>标准</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平均延迟</td>
+<td>亚洲线路 ≤120ms；欧美等远距离线路 ≤230ms</td>
+</tr>
+<tr>
+<td>卡顿</td>
+<td>不能出现 ≥1 秒的延迟</td>
+</tr>
+<tr>
+<td>丢包</td>
+<td>≤12.5%（8 个包最多丢 1 个）</td>
+</tr>
+</tbody>
+</table>
+<p>我们按这三项在晚高峰（20:00–23:00）判断，电信、联通、移动分开看。为什么这样定，我们在<a href="stable-vpn-selection.html">稳定 VPN 推荐怎么看</a>里讲过。它是我们自己为日常使用定的，不是行业统一标准；下载速度没有设硬性门槛，原因见下面例子三。</p>
+<h3>例子一：延迟很低，丢包却很高</h3>
+<p>举例：假设某条线路，电信用户测出来延迟 30ms 左右、不丢包；移动用户测出来延迟也只有 40ms，但每 4 个包丢 1 个。</p>
+<p>只看延迟，会觉得它「三网都快」。实际上移动用户连着连着就会断、视频会卡住，延迟数字再漂亮也没用。所以丢包要和延迟一起看，而且要按运营商分开看：同一台服务器，对电信用户好，不代表对移动用户也好。</p>
+<h3>例子二：平均值会把卡顿藏起来</h3>
+<p>举例：假设一条线路连测 10 次，8 次在 60ms 左右，另外 2 次拖到 1.5 秒。算出来的平均值大约 350ms，中位数却只有 60ms 左右。</p>
+<p>只给平均值，你会以为它「一直慢」；只给中位数，你会以为它「一直快」。真实情况是「大多数时候快，偶尔卡一下」，而那一下卡顿正好可能落在你下单的时候。所以看别人的测速，最好同时看到平均值、中位数和最大值，再按上面的标准，看有没有出现 1 秒以上的卡顿。</p>
+<h3>例子三：延迟达标，下载不一定顺</h3>
+<p>延迟只用很小的包测，下载是持续大量传数据，两者会走出不同结果。</p>
+<p>举例：假设某条线路晚高峰延迟 60ms、不丢包，三项标准都满足；但下载一个大文件，速度只有 0.5MB/s（约 4Mbps），开高清视频要缓冲。原因可能在路径上的带宽、拥堵，也可能在服务器端的 TCP 设置，光看延迟是看不出来的。</p>
+<p>所以下载速度要单独验证：<strong>延迟达标的线路，看视频、下文件之前再测一次下载。</strong> 我们没有给下载速度设统一门槛，是因为它受你家宽带、测速文件和测试点影响太大，同一条线路在不同人家里差别很大。</p>
+<h3>自己测的时候怎么做</h3>
+<ol>
+<li><strong>放在晚上 8 点到 11 点。</strong> 白天测出来的结果，证明不了晚高峰。</li>
+<li><strong>四项都记。</strong> 延迟、最大延迟、丢包、下载速度各记一栏，别只截图一个数字。</li>
+<li><strong>用你真正要做的事来测。</strong> 开一场视频会议、看一段高清视频、开着行情软件半小时，记下卡住和断线的次数。</li>
+<li><strong>注意客户端里的延迟是怎么测的。</strong> 以 Clash 系客户端用的 Mihomo 内核为例，节点旁的毫秒数来自「健康检查」，即客户端通过节点去访问一个测试地址的结果。它反映的是那一刻，不是整晚。</li>
+<li><strong>连续测几晚再下结论。</strong> 一次结果只能说明那一刻。</li>
+</ol>
+<p>连续几晚怎么排时段、怎么记录，见<a href="peak-hour-test-method.html">晚高峰实测方法</a>；买之前用试用期测哪些项目，见<a href="trial-checklist.html">机场试用应该测什么</a>。如果你是为了看盘和交易，测速快不等于行情稳，见<a href="exchange-latency-disconnect-test.html">看盘断线和延迟怎么测</a>。</p>
+<h3>看别人的测速图，先问这几句</h3>
+<ul>
+<li>哪天、几点测的？有没有写清测试时段？</li>
+<li>测的是电信、联通还是移动？有没有写清运营商？</li>
+<li>测试点在哪里，是大陆家庭宽带，还是海外机房？</li>
+<li>给的是平均值，还是也有最大值、丢包？</li>
+<li>测了几次、连续测了几晚？</li>
+</ul>
+<p>答不上来的，那张图只能当参考。</p>
+<h3>用登月VPN 怎么选线</h3>
+<p>登月VPN 的线路按运营商分开命名，线路名里写着电信、联通或移动，选和你家宽带一致的那条就行；只有三网都满足标准的才叫「三网直连」。按交易所和运营商怎么选，见<a href="exchange-route-choice.html">交易所用户怎么选线路</a>；价格和流量见<a href="https://dengyue.xyz/pricing">套餐页</a>；买之后连接遇到问题，见<a href="https://dengyue.xyz/help">帮助中心</a>。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一篇机场实测缺少哪些信息，就没法复核 | 登月VPN 技术笔记</title>
+<meta name="description" content="一篇机场实测要能复核，至少写清测了谁、在什么网络、哪天几点、用什么方法和标准、测了几次、有没有卡顿。缺一项，别人就无法重复。附 9 项清单。">
+<link rel="canonical" href="https://dengyue.xyz/blog/review-missing-details/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>一篇机场实测缺少哪些信息，就没法复核</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/review-missing-details/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>一篇机场实测能不能复核，看它写没写清：测了哪条线路、什么网络、哪天几点、什么方法和标准、测几次、最大值和卡顿、剔除了什么、作者和被测服务是什么关系。</strong></p>
+<p>缺的越多，越只能当作者的个人感受来读。</p>
+<p>这篇讲单篇实测报告。读整张排行榜的方法另见 <a href="vpn-ranking-evidence.html">VPN 排行榜怎么读</a>。我们是登月VPN，自己也卖线路。下面的例子都是标了「举例」的假设情况，不是哪条真实线路的成绩。</p>
+<h3>9 项清单</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>要写清什么</th>
+<th>缺了会怎样</th>
+<th>写清楚是什么样（举例）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>测的对象</strong>：哪条线路、出口在哪个国家</td>
+<td>「香港节点很快」，可能是十几个香港节点中的一个</td>
+<td>「香港【电信直连】01 ×2」，一个线路名对应一个出口</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>网络环境</strong>：省份或城市、运营商、家宽还是手机流量</td>
+<td>北京联通测得好，对广州电信用户没有参考价值</td>
+<td>「广州电信家庭宽带」</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>日期和时段</strong></td>
+<td>白天测的数据证明不了晚高峰</td>
+<td>「某月某日 20:30、21:30、22:30 三批，连测三晚」</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>工具和方法</strong>：ping、TCP 连接、下载测速、实际看视频</td>
+<td>不同测法的数字不能直接比</td>
+<td>「ping 和 TCP 连接两种，各自单独记」</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>判定标准</strong>：多少毫秒算好、卡顿怎么算</td>
+<td>同样 130ms，有人说快，有人说慢</td>
+<td>「亚洲线路平均 ≤120ms，不能有 ≥1 秒的卡顿」</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>样本数</strong></td>
+<td>一次截图只能说明那一刻</td>
+<td>「电信宽带测了 9 次，6 次达标」</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>最大值和卡顿次数</strong>，不只平均值</td>
+<td>平均值会把卡顿藏起来</td>
+<td>「平均 95ms，最高 1100ms，≥1 秒卡顿 1 次」</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>剔除了什么、为什么</strong></td>
+<td>作者可能悄悄删掉了对自己不利的结果</td>
+<td>「第二晚 21:30 那批家里断网，记为未测」</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>作者和被测服务的关系</strong>：是不是卖家、有没有推广返佣</td>
+<td>看不出写的人站在哪边</td>
+<td>「本文作者是该服务的推广者，链接带返佣」</td>
+</tr>
+</tbody>
+</table>
+<h3>最常见的四种缺口</h3>
+<p><strong>只有一张测速截图。</strong> 截图上通常有下载速度和一个延迟数字，但没有日期、时段、运营商，也看不出是第几次测的。这样的截图证明的是「某一刻测出过这个数」。</p>
+<p><strong>只写平均值。</strong> 平均值会把卡顿藏起来。举例：假设某条线路晚上测了 20 次，19 次都在 60ms 上下，有一次到了 1100ms，平均约 112ms，看起来在 120ms 以内。如果只写平均值，你看不出中间有一次超过 1 秒的卡顿。所以要同时写最大值或卡顿次数。</p>
+<p><strong>写「三网都快」，却不给三网各自的数字。</strong> 举例：假设一条线路电信宽带测 9 次只有 3 次达标，联通宽带测 9 次全部达标。三网平均起来可能还过得去，但电信用户会很失望。所以要分电信、联通、移动各给一组数字。</p>
+<p><strong>用机房测试代替家宽测试。</strong> 从海外服务器或国内机房测出来的数字，和从家里宽带连出去的可能不一样：服务器反过来测回大陆很快，不代表晚高峰从家里连过去也快。报告应该写明测试是从哪里发起的。</p>
+<h3>读到一篇实测，怎么用这份清单</h3>
+<ol>
+<li>按 9 项逐项打勾。</li>
+<li>第 2、3、7 项（网络环境、时段、最大值和卡顿）是最关键的三项。这三项缺任何一项，结论对你的参考价值就大打折扣。</li>
+<li>缺 3 项以上，把它当线索：知道有这家服务、大概在哪些地区有节点，然后自己测。</li>
+<li>不管报告多完整，它的网络都不是你家的网络。最后还是要在自己的网络上测三个晚上，方法见 <a href="peak-hour-test-method.html">晚高峰怎么自己测</a>；速度要怎么看，见 <a href="speedtest-buying-guide.html">机场测速怎么看</a>。</li>
+</ol>
+<h3>自己测登月VPN</h3>
+<p>登月VPN 的线路按运营商分：电信、联通、移动各有对应的直连线路，三网都达到标准才叫「三网直连」。选线时先看你家宽带是哪个运营商，选名字里对得上的那条，比如电信宽带选「新加坡【电信直连】01」、移动宽带选「韩国【移动直连】01」。</p>
+<p>套餐有月付，见 <a href="https://dengyue.xyz/pricing">套餐页</a>。别只听我们说，先买一个月，拿上面这 9 项当记录格式，在自己家测三个晚上再决定。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>

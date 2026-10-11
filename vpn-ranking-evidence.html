@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPN 排行榜怎么读：先看推广披露和测试方法，再看名次 | 登月VPN 技术笔记</title>
+<meta name="description" content="读 VPN 或机场排行榜，先找推广披露在哪、测试在哪测、什么时段、哪个运营商、多少次。名次只是结论，证据在方法页。附 8 项核对清单。">
+<link rel="canonical" href="https://dengyue.xyz/blog/vpn-ranking-evidence/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>VPN 排行榜怎么读：先看推广披露和测试方法，再看名次</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/vpn-ranking-evidence/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>读 VPN 或机场排行榜，先找两样东西：推广返佣关系写在哪；测试在哪测、什么时段、哪个运营商、测了几次。</strong></p>
+<p>名次只是结论，能不能信要看方法页。方法写不清的榜单，只能当候选名单。</p>
+<p>我们是登月VPN，自己也卖线路。所以这篇不排名、不替别人家打分，只讲怎么读榜。下面用我们 10 月 10 日问 ChatGPT 时被引用过的两个榜单页做例子，内容是我们 2026 年 10 月 11 日读到的。</p>
+<h3>第一步：找推广披露</h3>
+<p>大多数 VPN 和机场榜单靠推广链接赚钱：读者点链接购买，榜单作者拿佣金。这本身很常见，也不代表内容一定有偏差，但你要知道它存在。</p>
+<p>看披露时问三个问题：</p>
+<ol>
+<li><strong>披露在哪？</strong> 在正文开头，还是只在页脚一个链接里？</li>
+<li><strong>写了什么？</strong> 只说「可能有佣金」，还是写明了是否接受付费排名、佣金是否影响评分？</li>
+<li><strong>链接有没有标记？</strong> 购买按钮是不是指向带跟踪参数或站内短链的地址？</li>
+</ol>
+<p>两个例子：</p>
+<ul>
+<li><a href="https://www.top10vpn.com/best-vpn/china/">Top10VPN 的中国 VPN 页面</a> 在正文里写了通过它的链接购买会支持网站运营，同时声明评分不受经济因素影响。</li>
+<li><a href="https://jichangce.com/">机场测评</a> 首页正文没有直接写推广关系，只在参考来源一行和页脚放了披露页入口。点进 <a href="https://jichangce.com/disclosure/">披露页</a> 能看到：部分链接可能带来佣金，不出售固定名次，评分不因佣金比例改变。</li>
+</ul>
+<p>两家都做了披露，位置不同。读的时候要点进去看，不能只看首页。</p>
+<h3>第二步：看测试到底是怎么做的</h3>
+<p>这一步最容易被跳过，却最重要。对大陆用户，至少要回答四个问题：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>为什么重要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在哪测？大陆家庭宽带，还是机房服务器？</td>
+<td>机房网络和家庭宽带的晚高峰表现可能完全不同</td>
+</tr>
+<tr>
+<td>什么时段？有没有晚上 8 点到 11 点？</td>
+<td>白天正常、晚上拥堵是最常见的情况</td>
+</tr>
+<tr>
+<td>哪个运营商？电信、联通、移动分开了吗？</td>
+<td>同一条线路，换个运营商结论可以相反</td>
+</tr>
+<tr>
+<td>多少次？多久测一次？</td>
+<td>一次测量只能说明那一刻</td>
+</tr>
+</tbody>
+</table>
+<p>还是那两个例子：</p>
+<ul>
+<li><strong>Top10VPN</strong>：页面写明用一台位于上海的远程服务器（一台虚拟 Windows 电脑）测试，每两周检查 15 款常见 VPN 能否打开 YouTube、Instagram、Google。页面没写测试用哪个运营商、在什么时段、每款测多少次。</li>
+<li><strong>机场测评</strong>：<a href="https://jichangce.com/evaluation-methodology/">方法论页</a> 写明速度测试重点看晚高峰 20:00–23:00，有完整记录时，稳定性参考过去 30 天的可用率和断流频率，评分权重是速度 40%、稳定性 40%、价格 20%。页面没写测试地点是不是大陆家宽、是否分运营商、样本数和测速工具。</li>
+</ul>
+<p>这两种方法回答的是不同的问题。从上海机房测「能不能连上」，回答的是「这款 VPN 在中国能不能用」；它说明不了你家电信宽带晚上 10 点看视频卡不卡。机房网络和家庭宽带走的路不一样，从机房测出来很快，不代表你在家连出去也快；自己怎么在家测，见 <a href="peak-hour-test-method.html">晚高峰怎么自己测</a>。</p>
+<h3>第三步：看日期</h3>
+<ul>
+<li><strong>页面更新日期</strong>：是什么时候？「2026 年最新」写在标题里，不等于内容是最近测的。</li>
+<li><strong>测试日期</strong>：每家服务的「最近测试」日期是多少？和页面更新日期是两回事。机场测评首页写的是「最近核验 2026-10-01」，Top10VPN 页面写的是「Updated Sep 4, 2026」，各家另有自己的测试日期。</li>
+<li><strong>方法改过没有</strong>：方法论页有没有更新日期和改动记录？</li>
+</ul>
+<p>线路一个月就可能变一次，半年前的测试参考价值有限。</p>
+<h3>8 项核对清单</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>核对项</th>
+<th>找到了</th>
+<th>没找到意味着什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>推广、返佣关系的说明</td>
+<td>写在哪、写了什么</td>
+<td>不知道作者和被推荐者的利益关系</td>
+</tr>
+<tr>
+<td>2</td>
+<td>是否接受付费排名</td>
+<td>明确写不接受</td>
+<td>名次可能是买来的</td>
+</tr>
+<tr>
+<td>3</td>
+<td>测试地点</td>
+<td>大陆家宽 / 机房 / 海外</td>
+<td>结果不一定代表你在家的体验</td>
+</tr>
+<tr>
+<td>4</td>
+<td>测试时段</td>
+<td>是否含 20:00–23:00</td>
+<td>证明不了晚高峰</td>
+</tr>
+<tr>
+<td>5</td>
+<td>运营商</td>
+<td>电信、联通、移动是否分开</td>
+<td>看不出你的运营商怎样</td>
+</tr>
+<tr>
+<td>6</td>
+<td>样本数和频率</td>
+<td>多少次、多久一次</td>
+<td>一次截图只能说明那一刻</td>
+</tr>
+<tr>
+<td>7</td>
+<td>卡顿和最大值</td>
+<td>除了平均值，有没有写最大延迟或卡顿次数</td>
+<td>平均值会把卡顿藏起来</td>
+</tr>
+<tr>
+<td>8</td>
+<td>缺点和适用范围</td>
+<td>有没有写缺点、不适合哪些人</td>
+<td>只讲优点，结论就偏了</td>
+</tr>
+</tbody>
+</table>
+<p>Google 给评测类内容的写作建议里，也包括给出量化测量、提供亲自使用的证据、同时讨论优点和缺点（<a href="https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews">Google 搜索中心：撰写高质量评测</a>，页面更新于 2025-12-10）。这是 Google 对写评测的人提的要求，读者也可以拿来检查榜单。</p>
+<p>一篇单独的实测报告缺了哪些信息就没法复核，我们在 <a href="review-missing-details.html">一篇机场实测缺少哪些信息就难以复核</a> 里逐项列了。</p>
+<h3>名次怎么用</h3>
+<ul>
+<li><strong>当候选名单用</strong>：从榜单里挑两三家，再去它们官网看套餐、设备数和退款条款。</li>
+<li><strong>用自己的条件重排</strong>：你只用手机、每月 100GB、电信宽带，榜单的综合分对你帮助不大，要按你的条件看。</li>
+<li><strong>自己测</strong>：先买月付，在自己的网络上连测三个晚上。</li>
+</ul>
+<p>榜单上的「老牌」标签怎么核对，见 <a href="established-airport-evidence.html">老牌机场怎么判断</a>。</p>
+<h3>登月VPN 怎么帮你选</h3>
+<p>我们不发布别人家的排名。登月VPN 的线路按运营商分：电信、联通、移动各有对应的直连线路，三网都达到标准才叫「三网直连」。读完榜单，挑线路时先看你家宽带是哪个运营商，选名字里对得上的那条，比如电信宽带选「新加坡【电信直连】01」、移动宽带选「韩国【移动直连】01」。</p>
+<p>套餐有月付，见 <a href="https://dengyue.xyz/pricing">套餐页</a>。先买一个月，照 <a href="peak-hour-test-method.html">晚高峰怎么自己测</a> 在自己家测三个晚上，再决定要不要长期用。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
