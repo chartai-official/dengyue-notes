@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>币安 WebSocket 老断开：行情推送延迟怎么查 | 登月VPN 技术笔记</title>
+<meta name="description" content="币安行情推送断开，先分清是币安的连接规则、你的本地网络，还是中间线路。按三段排查，附按运营商推荐的线路。">
+<link rel="canonical" href="https://dengyue.xyz/blog/binance-websocket-disconnect/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>币安 WebSocket 老断开：行情推送延迟怎么查</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/binance-websocket-disconnect/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>币安 WebSocket 断开，先看规律：约 24 小时断一次，是币安的连接规则；只在晚上频繁断、恢复慢，多半是线路。按「币安规则 → 本地设备 → 线路」三段排查。</strong></p>
+<p>线路问题的解决办法是按你家运营商选一条直连线路固定用：电信用新加坡【电信直连】01，联通用新加坡、韩国或日本的联通直连，移动用韩国【移动直连】01。</p>
+<h3>WebSocket 断开和「币安打不开」不是一回事</h3>
+<p>币安网页和 App 上的实时价格、深度和成交明细，靠 WebSocket 推过来：连接建好后一直挂着，有新数据就推。断开时页面通常还能打开，只是价格停住、K 线不跳，过一会儿自己恢复。</p>
+<p>如果是整个页面打不开、一直转圈或提示网络异常，那是另一类问题，看 <a href="binance-network-route.html">币安打不开、提示网络异常怎么办</a>。</p>
+<h3>第一段：先对照币安自己的断开规则</h3>
+<p>币安现货 WebSocket 行情文档写明了这些规则（2026-10-11 核对 <a href="https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md">币安官方文档</a>）：</p>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>文档写法</th>
+<th>对你意味着什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连接时长</td>
+<td>单个连接只保持 24 小时，到点断开</td>
+<td>挂一整天的程序，每天必然断一次，要能自动重连</td>
+</tr>
+<tr>
+<td>心跳</td>
+<td>服务器每 20 秒发一次 ping，一分钟内收不到 pong 就断开</td>
+<td>自己写的程序没回 pong，会每隔约一分钟断一次</td>
+</tr>
+<tr>
+<td>消息频率</td>
+<td>客户端每个连接每秒最多向服务器发 5 条消息（含 ping、pong、订阅/取消订阅）</td>
+<td>订阅请求发太快会被断开，反复被断的 IP 可能被封</td>
+</tr>
+<tr>
+<td>连接次数</td>
+<td>每个 IP 每 5 分钟最多 300 次连接</td>
+<td>重连写成死循环、不加间隔，会撞上这个上限</td>
+</tr>
+<tr>
+<td>服务器维护</td>
+<td>服务器要关闭前会推送 <code>serverShutdown</code> 事件，随后断开</td>
+<td>收到这个事件就该马上新建连接</td>
+</tr>
+<tr>
+<td>订阅数量</td>
+<td>单个连接最多 1024 个数据流</td>
+<td>订阅过多要拆成多个连接</td>
+</tr>
+</tbody>
+</table>
+<p>对照方法很简单：把每次断开的时间记下来。间隔接近 24 小时，或者断之前收到过 <code>serverShutdown</code>，都是正常规则，自动重连就行，不用换网络。</p>
+<p>用网页和 App 看盘的人碰不到心跳和订阅频率这几条，App 会自己处理；这两条主要针对自己写程序、用量化工具的人。</p>
+<h3>第二段：排除本地网络和设备</h3>
+<p>币安规则对不上，再看你这一端。下面几种情况，换线路也解决不了：</p>
+<ul>
+<li><strong>电脑或手机休眠。</strong> 屏幕关闭、App 切到后台后，系统会限制网络，回来时行情要重新连。看盘时把节能设置调松。</li>
+<li><strong>Wi-Fi 信号弱或在两个热点间切换。</strong> 换成网线或靠近路由器，再看还断不断。</li>
+<li><strong>客户端在几个节点之间自动跳。</strong> 开着「自动选择」「负载均衡」时，出口一换，原来的连接就断了。固定一条线路，设置方法见 <a href="https://dengyue.xyz/help">帮助中心</a>。</li>
+<li><strong>程序本身的问题</strong>（写程序的人看）：没回 pong、重连没加等待时间、单个连接订阅太多。按上面那张表逐项改。</li>
+</ul>
+<p>一个快速对照：手机关掉 Wi-Fi，用流量连同一条线路，打开币安同一个交易对。手机也跟着断，多半是币安那边或这条线路；只有家里宽带断，先查路由器和 Wi-Fi，再看第三段。</p>
+<h3>第三段：判断是不是线路的问题</h3>
+<p>前两段都排除后，满足下面的特征，基本可以确定是线路：</p>
+<ol>
+<li><strong>只在晚上 8 点到 11 点频繁断，白天正常。</strong> 这是晚高峰跨境线路拥堵的典型表现。</li>
+<li><strong>断开没有规律</strong>，几分钟一次，和 24 小时、心跳间隔都对不上。</li>
+<li><strong>推送明显变慢但没断</strong>：价格跳动比平时慢一拍，深度一阵一阵地更新。</li>
+<li><strong>换一条线路同时对照，那边正常。</strong></li>
+</ol>
+<p>记录时把日期、时段、运营商、断了几次、每次多久恢复写下来，连记三晚再下结论。完整的记录表和看法见 <a href="exchange-latency-disconnect-test.html">测速快不等于行情稳：看盘断线和延迟怎么测</a>。</p>
+<h3>币安推荐用哪条线路</h3>
+<p>跨境线路拥堵和运营商关系很大，电信、联通、移动出国走的线路各自独立。选和你家运营商对应的直连线路，并且固定用一条：</p>
+<table>
+<thead>
+<tr>
+<th>你的宽带</th>
+<th>推荐线路</th>
+<th>也可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电信</td>
+<td>新加坡【电信直连】01</td>
+<td>日本【电信直连】01、韩国【电信直连】01</td>
+</tr>
+<tr>
+<td>联通</td>
+<td>新加坡【联通直连】01、韩国【联通直连】01、日本【联通直连】01</td>
+<td>—</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>韩国【移动直连】01</td>
+<td>新加坡【移动直连】01、韩国【移动直连】02</td>
+</tr>
+</tbody>
+</table>
+<p>账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。固定一条线路，也能避免客户端自动换节点时把行情连接打断。</p>
+<h3>写程序接行情的人：两点补充</h3>
+<ul>
+<li><strong>端口和地址。</strong> 币安文档列了两个端口：<code>wss://stream.binance.com:9443</code> 和 <code>:443</code>。断线严重时，用两个端口各连一次对照，能帮你判断是不是某个端口的连接有问题。另有 <code>wss://data-stream.binance.vision</code>，只推行情，不推账户数据。</li>
+<li><strong>断线后的数据补齐。</strong> 按币安文档维护本地订单簿时，推送的更新编号如果接不上，说明中间漏了消息，要丢掉本地订单簿，重新取快照再接着更新。只重连不重建，订单簿会和实际对不上。</li>
+</ul>
+<p>程序要全天候在线，比如自动交易或需要 API 白名单的场景，放云服务器上更合适，两种做法的比较见 <a href="exchange-api-ip-whitelist.html">交易所 API 白名单：用云服务器还是固定出口线路</a>。</p>
+<p>本文只核对了币安现货行情的 WebSocket 文档；合约的连接规则另有文档，以币安官方说明为准。</p>
+<p>套餐和价格见 <a href="https://dengyue.xyz/pricing">dengyue.xyz/pricing</a>，先买月付，按上面三段查完、测三个晚上再决定。登月VPN 是 2026 年 10 月 10 日开卖的直连线路服务。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
