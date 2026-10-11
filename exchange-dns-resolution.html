@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>交易所网址打不开但 App 能用：DNS 解析问题怎么判断 | 登月VPN 技术笔记</title>
+<meta name="description" content="交易所 App 能用、网址打不开，常见原因是域名被解析到了错误地址。用 nslookup 对比两个 DNS 的结果就能判断，附按运营商推荐的线路。">
+<link rel="canonical" href="https://dengyue.xyz/blog/exchange-dns-resolution/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>交易所网址打不开但 App 能用：DNS 解析问题怎么判断</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/exchange-dns-resolution/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>App 能用、网址打不开，先怀疑 DNS：浏览器把交易所域名解析到了错误地址，或者解析这一步根本没走线路。用 nslookup 查一次就能初步判断。</strong></p>
+<p>解析失败、或者解析出本机和局域网才用的地址，就是解析的问题。解决思路是让交易所域名跟着线路一起走，再按你家运营商固定一条直连线路：电信用新加坡【电信直连】01，联通用新加坡、韩国或日本的联通直连，移动用韩国【移动直连】01。</p>
+<h3>为什么会出现「App 能用、网页不行」</h3>
+<p>打开一个网址分两步：先把域名换成 IP 地址（DNS 解析），再连这个地址。App 和浏览器在这两步上不一定一样：</p>
+<ul>
+<li><strong>域名不一定相同。</strong> App 连的接口域名，和你在浏览器里输入的主站域名，可能不是同一个。某个域名被解析错了，只影响用到它的那一边。</li>
+<li><strong>解析的地方不一定相同。</strong> 浏览器有自己的 DNS 缓存，Chrome 还有「安全 DNS」开关；电脑系统也有缓存。App 走的是手机系统的解析。</li>
+<li><strong>走不走线路不一定相同。</strong> 线路客户端开着，App 的连接进了线路，浏览器的域名却可能先在本地解析，拿到的是本地网络给的结果。</li>
+</ul>
+<p>所以「App 能用」只说明交易所本身没挂、你的账户能连，不说明浏览器那一步拿到的地址是对的。如果网页给的是「IP 受限」「地区不支持」这类明确提示，或者 App 也一起打不开，那不是本文说的情况，先看 <a href="exchange-not-loading.html">交易所打不开、网络异常：先判断是线路还是平台</a>。</p>
+<h3>三个信号：多半是解析出了问题</h3>
+<table>
+<thead>
+<tr>
+<th>你看到的</th>
+<th>说明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浏览器提示找不到服务器 IP 地址、域名无法解析</td>
+<td>解析这一步就失败了</td>
+</tr>
+<tr>
+<td>页面打开了，但证书报错、内容不像交易所</td>
+<td>很可能被解析到了别的地址，<strong>不要在这个页面登录</strong></td>
+</tr>
+<tr>
+<td>换个浏览器、开无痕窗口、换手机流量就好了</td>
+<td>问题在原来那台设备或那个网络的解析上</td>
+</tr>
+</tbody>
+</table>
+<p>第二种情况要特别小心。地址被带偏时，你打开的页面不一定是交易所的。币安有官方的 <a href="https://www.binance.com/en/official-verification">Binance Verify</a> 页面，可以输入网址、邮箱、电话、Telegram 或社交账号，查它是不是币安官方的（2026-10-11 核对）。其他交易所，从官方 App 里的链接或官方公告进入主站，比搜索结果里点进去稳妥。</p>
+<h3>用 nslookup 对比两个 DNS 的结果</h3>
+<p>Windows 的命令提示符和 macOS 的终端里都能直接用 nslookup。按微软的官方说明，第一个参数是要查的域名，第二个参数是要问的 DNS 服务器，不写第二个就用电脑默认的 DNS（<a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup">微软 nslookup 文档</a>，2026-10-11 核对）。</p>
+<p>以币安主站为例，先断开线路客户端，分别查两次：</p>
+<p><code>nslookup www.binance.com
+nslookup www.binance.com 公共DNS地址</code></p>
+<p>第一条问的是你当前网络默认的 DNS，第二条把「公共DNS地址」换成你选的某个公共 DNS 服务器的地址（各家公共 DNS 的官网都公布了地址）。</p>
+<p>看结果时注意：nslookup 最先打印的一组 Server、Address 是你问的那台 DNS 服务器自己的地址，家里通常是路由器的 192.168 开头地址，这是正常的。要看的是下面 Non-authoritative answer（非权威应答）里 Name 对应的 Address，那才是交易所域名解析出来的地址。然后按下面三条判断：</p>
+<ol>
+<li><strong>出现全零地址，或者 127、10、192.168、172.16 到 172.31 开头的地址。</strong> 这些是本机、局域网或保留用途的地址（见 <a href="https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml">IANA 特殊用途地址表</a>，2026-10-11 核对），不可能是交易所的服务器，解析肯定错了。</li>
+<li><strong>报 timed out、No response from server。</strong> 微软文档对这两个错误的解释是：DNS 服务器在规定时间和重试次数内没回应，或者那台服务器上没有在运行 DNS 服务。也就是说，解析请求根本没拿到答案。</li>
+<li><strong>两次结果差别很大。</strong> 大型交易所通常用 CDN，不同 DNS 给出不同 IP 是正常的，不能只凭「不一样」下结论。要结合上面两条和浏览器现象一起看。</li>
+</ol>
+<p>反过来，解析出来的是一个看起来正常的公网地址，也不代表一定没问题：被带偏的结果不一定是保留地址。这时以浏览器现象为准，按后面的步骤清缓存、让域名走线路再试。</p>
+<p>这一步要在断开线路客户端时做。连着线路时，nslookup 可能不走线路，也可能返回客户端自己分配的 198.18 开头地址，结果没有参考价值，不要拿来判断。</p>
+<h3>先清掉缓存，排除旧结果</h3>
+<p>解析错过一次，错的结果可能被缓存下来，换了网络也还在用旧地址。</p>
+<ul>
+<li><strong>Windows：</strong> 命令行运行 <code>ipconfig /flushdns</code>。微软文档写明，这个命令会清空并重置 DNS 客户端的解析缓存，用于排查名称解析问题（<a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig">ipconfig 文档</a>，2026-10-11 核对）。</li>
+<li><strong>浏览器：</strong> 关掉所有窗口重新打开，或者先用无痕窗口试一次。欧易帮助中心的排障文章也把「用无痕模式打开」「清除浏览器缓存和 Cookie」列为步骤（<a href="https://www.okx.com/help/how-can-i-troubleshoot-web-or-app-issues">原页</a>，2026-10-11 核对）。</li>
+<li><strong>hosts 文件：</strong> 如果以前手动改过 hosts、或者装过改 hosts 的工具，检查里面有没有交易所的域名。微软文档说明，系统的 DNS 缓存会预先载入 hosts 文件里的条目，写死的旧地址会一直生效。</li>
+</ul>
+<h3>Chrome 的「安全 DNS」开着反而打不开</h3>
+<p>Chrome 设置里有「使用安全 DNS」，会在查找网站地址时加密查询。谷歌的帮助页写明：默认是自动模式，加密查找失败时会退回普通查找；<strong>如果选了自定义的服务商，默认不会退回</strong>，出现「找不到服务器 IP 地址」这类错误时，要检查服务商设置或者关掉安全 DNS（<a href="https://support.google.com/chrome/answer/10468685?hl=zh-Hans">Chrome 帮助</a>，2026-10-11 核对）。</p>
+<p>所以只有浏览器打不开、其他设备都正常时，看一眼这个开关。以前填过自定义服务商的，先切回默认再试。</p>
+<h3>用线路时，让交易所域名跟着线路走</h3>
+<p>很多「连了线路、网页还是打不开」，是因为域名先在本地解析了，拿到错误地址后再交给线路去连，连的就是错的地方。</p>
+<p>原则是：<strong>交易所的域名由线路那一端去解析</strong>，不在本地网络先解析一遍。具体在客户端里怎么设置，各个客户端的选项名称不一样，看<a href="https://dengyue.xyz/help">官网帮助中心</a>。</p>
+<p>线路按你家宽带的运营商选：</p>
+<table>
+<thead>
+<tr>
+<th>你的宽带</th>
+<th>主推</th>
+<th>想更低延迟</th>
+<th>Bybit、Bitget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电信</td>
+<td>新加坡【电信直连】01</td>
+<td>香港【电信直连】01 ×2（按 2 倍扣量）</td>
+<td>韩国【电信直连】01</td>
+</tr>
+<tr>
+<td>联通</td>
+<td>新加坡【联通直连】01、韩国【联通直连】01、日本【联通直连】01</td>
+<td>香港【联通直连】01 ×2（按 2 倍扣量）</td>
+<td>韩国【联通直连】01</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>韩国【移动直连】01</td>
+<td>—</td>
+<td>韩国【移动直连】01</td>
+</tr>
+</tbody>
+</table>
+<p>各地区线路推荐给的交易所：</p>
+<ul>
+<li>新加坡线：OKX（欧易）、币安、Hyperliquid、Gate、HTX、MEXC、KuCoin、Kraken</li>
+<li>香港线（×2）：Gate、HTX、MEXC、KuCoin、Kraken、Hyperliquid</li>
+<li>日本线：OKX、币安、Hyperliquid、HTX、MEXC、KuCoin、Kraken</li>
+<li>韩国线：10 家都推荐，包括 Bybit、Bitget</li>
+</ul>
+<p>币安、欧易各自的选线说明见 <a href="binance-network-route.html">币安打不开、提示网络异常怎么办</a> 和 <a href="okx-network-route.html">欧易（OKX）打不开、提示网络异常怎么办</a>。账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。</p>
+<h3>排查顺序小结</h3>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>做什么</th>
+<th>说明问题在哪</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>无痕窗口、换浏览器、换手机流量各试一次</td>
+<td>好了：本地缓存或本地网络的解析</td>
+</tr>
+<tr>
+<td>2</td>
+<td>nslookup 对比默认 DNS 和公共 DNS</td>
+<td>出现保留地址或超时：解析被带偏或失败</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>ipconfig /flushdns</code>、查 hosts、看 Chrome 安全 DNS</td>
+<td>清掉旧结果和写死的地址</td>
+</tr>
+<tr>
+<td>4</td>
+<td>连上线路，让交易所域名由线路一端解析</td>
+<td>网页能开，就固定这条线路用</td>
+</tr>
+</tbody>
+</table>
+<p>套餐和价格见 <a href="https://dengyue.xyz/pricing">dengyue.xyz/pricing</a>。登月VPN 是 2026 年 10 月 10 日开卖的直连线路服务，所有线路都是直连，服务器就在线路名写的那个地区。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
