@@ -22,7 +22,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
 <h1>一个月需要多少流量：1 小时视频、1 小时会议各用多少 GB</h1>
 <p class="note">本文原载于<a href="https://dengyue.xyz/blog/monthly-traffic-estimate/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
-<p><strong>一个月要多少流量，主要看视频和会议的时长。</strong> 按官方带宽换算，1 小时 1080p 视频约 2–3GB，1 小时视频会议约 0.7–3.2GB，上传也算；网页聊天要自己量。</p>
+<p><strong>一个月要多少流量，主要看视频和会议的时长。</strong> 按官方带宽换算，1 小时 1080p 视频约 2–3GB，1 小时视频会议约 0.7–3.2GB，上传也算，网页聊天要自己量。</p>
 <p>下面先给换算公式，再列各平台官方数字换算出来的每小时流量，最后用一个假设的使用习惯算一遍。</p>
 <h3>换算公式</h3>
 <p>平台给的数字一般是带宽（Mbps，每秒兆比特），要换成每小时多少 GB：</p>
@@ -149,7 +149,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 </tr>
 </tbody>
 </table>
-<p>来源（均为 2026-10-11 核对）：<a href="https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0060748">Zoom 系统要求</a>；<a href="https://knowledge.workspace.google.com/admin/meet/prepare-your-network-for-meet-meetings-and-live-streams">Google Meet 网络准备</a>（个人或小型组织的每位参与者带宽）；<a href="https://learn.microsoft.com/en-us/microsoftteams/prepare-network">Microsoft Teams 网络准备</a>。</p>
+<p>来源（均为 2026-10-11 核对）：<a href="https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0060748">Zoom 系统要求</a>，<a href="https://knowledge.workspace.google.com/admin/meet/prepare-your-network-for-meet-meetings-and-live-streams">Google Meet 网络准备</a>（个人或小型组织的每位参与者带宽），<a href="https://learn.microsoft.com/en-us/microsoftteams/prepare-network">Microsoft Teams 网络准备</a>。</p>
 <p>开会时关掉摄像头、只开语音，流量会降到很小。共享屏幕的流量也和画面变化多少有关，Zoom 给的纯共享屏幕（无视频缩略图）只要 50–75 kbps。</p>
 <h3>网页、聊天和 AI 工具：没有官方数字，自己量</h3>
 <p>网页、社交软件、AI 对话这类用途，没有可靠的官方每小时数字，网页里的图片和视频多少差别也很大。最准的办法是自己量：</p>
@@ -203,26 +203,26 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 </tr>
 </tbody>
 </table>
-<p>这个人买 150GB 左右额度的套餐就够；买 500GB 的话，大部分额度会在月底作废。</p>
+<p>这个人买 150GB 左右额度的套餐就够。买 500GB 的话，大部分额度会在月底作废。</p>
 <h3>三件会让你的额度用得更快的事</h3>
 <ul>
 <li><strong>倍率。</strong> 有的线路按 1.5 倍、2 倍扣量。上面的 116GB 如果全部走 2 倍线路，会扣掉 232GB。</li>
 <li><strong>上传计入。</strong> 开会多、经常上传文件的人，上传不可忽视。看条款有没有写上传是否计入。</li>
 <li><strong>单位差异。</strong> 有的客户端按 1024 进位显示流量，同样的量会比按 1000 算的少显示约 7%。对账时看清楚两边用的是哪种单位。</li>
 </ul>
-<p>算出用量后，怎么选套餐：用量稳定的选月付，用量小或不固定的可以看流量包，详见 <a href="usage-vs-monthly.html">按量付费和月付机场，哪种适合自己的用量</a>；把倍率和付款网络费算进去比价，见 <a href="budget-airport-selection.html">便宜机场怎么选</a>。开会多的人，除了流量还要看丢包和连续连接，见 <a href="remote-work-vpn-choice.html">远程办公 VPN 怎么选</a>。</p>
+<p>算出用量后，怎么选套餐：用量稳定的选月付，用量小或不固定的可以看流量包，详见 <a href="usage-vs-monthly.html">按量付费和月付机场，哪种适合自己的用量</a>。把倍率和付款网络费算进去比价，见 <a href="budget-airport-selection.html">便宜机场怎么选</a>。开会多的人，除了流量还要看丢包和连续连接，见 <a href="remote-work-vpn-choice.html">远程办公 VPN 怎么选</a>。</p>
 <h3>登月VPN 的计量规则</h3>
 <p>我们是登月VPN，下面是自报信息（2026-10-11 核对）：</p>
 <ul>
-<li>套餐页按 1GB = 1,000,000,000 字节计算；每个服务月重置，不结转（<a href="https://dengyue.xyz/pricing">套餐页</a>）。</li>
-<li>上传和下载都计入用量（<a href="https://dengyue.xyz/terms">服务条款</a>）；香港线路（线路名带「×2」）按 2 倍扣量，其余线路按 1 倍扣（<a href="https://dengyue.xyz/pricing">套餐页</a>）。</li>
+<li>按 1GB = 1,000,000,000 字节计算（<a href="https://dengyue.xyz/terms">服务条款</a>），每个服务月重置，不结转（<a href="https://dengyue.xyz/pricing">套餐页</a>）。</li>
+<li>上传和下载都计入用量（<a href="https://dengyue.xyz/terms">服务条款</a>）。线路页上的线路都没有倍率标记，也就是按 1 倍计入用量（<a href="https://dengyue.xyz/regions">线路页</a>，2026-10-13 核对）。</li>
 </ul>
-<p>登月VPN 目前只卖一档每月 500G 的套餐。按上面的算法估出来每月只要几十 GB 的人，这档对你偏大；每天看视频、开会多，或者全家几台设备一起用的，可以按算出来的用量对照一下。</p>
+<p>登月VPN 目前只卖一档每月 500G 的套餐。按上面的算法估出来每月只要几十 GB 的人，这档对你偏大。每天看视频、开会多，或者全家几台设备一起用的，可以按算出来的用量对照一下。</p>
 <h3>下一步</h3>
 <ul>
 <li>看登月VPN 的套餐和价格：<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
 <li>主要上交易所的，按交易所和运营商选线路：<a href="exchange-route-choice.html">交易所用户怎么选线路</a>。</li>
 </ul>
 </main>
-<footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+<footer>© 2026 登月VPN DENGYUE · 直连交易所，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
 </body></html>
