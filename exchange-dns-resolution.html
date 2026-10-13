@@ -23,12 +23,12 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <h1>交易所网址打不开但 App 能用：DNS 解析问题怎么判断</h1>
 <p class="note">本文原载于<a href="https://dengyue.xyz/blog/exchange-dns-resolution/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
 <p><strong>App 能用、网址打不开，先怀疑 DNS：浏览器把交易所域名解析到了错误地址，或者解析这一步根本没走线路。用 nslookup 查一次就能初步判断。</strong></p>
-<p>解析失败、或者解析出本机和局域网才用的地址，就是解析的问题。解决思路是让交易所域名跟着线路一起走，再按你家运营商固定一条直连线路：电信用新加坡【电信直连】01，联通用新加坡、韩国或日本的联通直连，移动用韩国【移动直连】01。</p>
+<p>解析失败、或者解析出本机和局域网才用的地址，就是解析的问题。解决思路是让交易所域名跟着线路一起走，再按你家运营商固定一条直连线路：电信用韩国【电信直连】01，联通用韩国【联通直连】01，移动用韩国【移动直连】01。</p>
 <h3>为什么会出现「App 能用、网页不行」</h3>
 <p>打开一个网址分两步：先把域名换成 IP 地址（DNS 解析），再连这个地址。App 和浏览器在这两步上不一定一样：</p>
 <ul>
 <li><strong>域名不一定相同。</strong> App 连的接口域名，和你在浏览器里输入的主站域名，可能不是同一个。某个域名被解析错了，只影响用到它的那一边。</li>
-<li><strong>解析的地方不一定相同。</strong> 浏览器有自己的 DNS 缓存，Chrome 还有「安全 DNS」开关；电脑系统也有缓存。App 走的是手机系统的解析。</li>
+<li><strong>解析的地方不一定相同。</strong> 浏览器有自己的 DNS 缓存，Chrome 还有「安全 DNS」开关，电脑系统也有缓存。App 走的是手机系统的解析。</li>
 <li><strong>走不走线路不一定相同。</strong> 线路客户端开着，App 的连接进了线路，浏览器的域名却可能先在本地解析，拿到的是本地网络给的结果。</li>
 </ul>
 <p>所以「App 能用」只说明交易所本身没挂、你的账户能连，不说明浏览器那一步拿到的地址是对的。如果网页给的是「IP 受限」「地区不支持」这类明确提示，或者 App 也一起打不开，那不是本文说的情况，先看 <a href="exchange-not-loading.html">交易所打不开、网络异常：先判断是线路还是平台</a>。</p>
@@ -78,7 +78,7 @@ nslookup www.binance.com 公共DNS地址</code></p>
 <li><strong>hosts 文件：</strong> 如果以前手动改过 hosts、或者装过改 hosts 的工具，检查里面有没有交易所的域名。微软文档说明，系统的 DNS 缓存会预先载入 hosts 文件里的条目，写死的旧地址会一直生效。</li>
 </ul>
 <h3>Chrome 的「安全 DNS」开着反而打不开</h3>
-<p>Chrome 设置里有「使用安全 DNS」，会在查找网站地址时加密查询。谷歌的帮助页写明：默认是自动模式，加密查找失败时会退回普通查找；<strong>如果选了自定义的服务商，默认不会退回</strong>，出现「找不到服务器 IP 地址」这类错误时，要检查服务商设置或者关掉安全 DNS（<a href="https://support.google.com/chrome/answer/10468685?hl=zh-Hans">Chrome 帮助</a>，2026-10-11 核对）。</p>
+<p>Chrome 设置里有「使用安全 DNS」，会在查找网站地址时加密查询。谷歌的帮助页写明：默认是自动模式，加密查找失败时会退回普通查找。<strong>如果选了自定义的服务商，默认不会退回</strong>，出现「找不到服务器 IP 地址」这类错误时，要检查服务商设置或者关掉安全 DNS（<a href="https://support.google.com/chrome/answer/10468685?hl=zh-Hans">Chrome 帮助</a>，2026-10-11 核对）。</p>
 <p>所以只有浏览器打不开、其他设备都正常时，看一眼这个开关。以前填过自定义服务商的，先切回默认再试。</p>
 <h3>用线路时，让交易所域名跟着线路走</h3>
 <p>很多「连了线路、网页还是打不开」，是因为域名先在本地解析了，拿到错误地址后再交给线路去连，连的就是错的地方。</p>
@@ -89,38 +89,55 @@ nslookup www.binance.com 公共DNS地址</code></p>
 <tr>
 <th>你的宽带</th>
 <th>主推</th>
-<th>想更低延迟</th>
-<th>Bybit、Bitget</th>
+<th>也可选</th>
+<th>用 Bybit、Bitget</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>电信</td>
-<td>新加坡【电信直连】01</td>
-<td>香港【电信直连】01 ×2（按 2 倍扣量）</td>
+<td>韩国【电信直连】01</td>
+<td>香港【电信直连】01、日本【电信直连】01</td>
 <td>韩国【电信直连】01</td>
 </tr>
 <tr>
 <td>联通</td>
-<td>新加坡【联通直连】01、韩国【联通直连】01、日本【联通直连】01</td>
-<td>香港【联通直连】01 ×2（按 2 倍扣量）</td>
+<td>韩国【联通直连】01</td>
+<td>香港【联通直连】01、日本【联通直连】01</td>
 <td>韩国【联通直连】01</td>
 </tr>
 <tr>
 <td>移动</td>
 <td>韩国【移动直连】01</td>
-<td>—</td>
+<td>香港【移动直连】01、日本【移动直连】01</td>
 <td>韩国【移动直连】01</td>
 </tr>
 </tbody>
 </table>
-<p>各地区线路推荐给的交易所：</p>
-<ul>
-<li>新加坡线：OKX（欧易）、币安、Hyperliquid、Gate、HTX、MEXC、KuCoin、Kraken</li>
-<li>香港线（×2）：Gate、HTX、MEXC、KuCoin、Kraken、Hyperliquid</li>
-<li>日本线：OKX、币安、Hyperliquid、HTX、MEXC、KuCoin、Kraken</li>
-<li>韩国线：10 家都推荐，包括 Bybit、Bitget</li>
-</ul>
+<p>「也可选」要看你用哪家交易所，见下表。</p>
+<table>
+<thead>
+<tr>
+<th>线路地区</th>
+<th>推荐给</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>韩国线</td>
+<td>币安、欧易（OKX）、Bybit、Bitget、Gate、火币（HTX）、MEXC、KuCoin、Kraken、Hyperliquid</td>
+</tr>
+<tr>
+<td>香港线</td>
+<td>Gate、火币（HTX）、MEXC、KuCoin、Kraken、Hyperliquid</td>
+</tr>
+<tr>
+<td>日本线</td>
+<td>币安、欧易（OKX）、火币（HTX）、MEXC、KuCoin、Kraken、Hyperliquid</td>
+</tr>
+</tbody>
+</table>
+<p>美国三条线路（美国【电信直连】01、美国【联通直连】01、美国【移动直连】01）是日常上网线，用交易所请选上面的亚洲线路。</p>
 <p>币安、欧易各自的选线说明见 <a href="binance-network-route.html">币安打不开、提示网络异常怎么办</a> 和 <a href="okx-network-route.html">欧易（OKX）打不开、提示网络异常怎么办</a>。账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。</p>
 <h3>排查顺序小结</h3>
 <table>
