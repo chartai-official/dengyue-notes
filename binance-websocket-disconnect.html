@@ -22,8 +22,8 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
 <h1>币安 WebSocket 老断开：行情推送延迟怎么查</h1>
 <p class="note">本文原载于<a href="https://dengyue.xyz/blog/binance-websocket-disconnect/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
-<p><strong>币安 WebSocket 断开，先看规律：约 24 小时断一次，是币安的连接规则；只在晚上频繁断、恢复慢，多半是线路。按「币安规则 → 本地设备 → 线路」三段排查。</strong></p>
-<p>线路问题的解决办法是按你家运营商选一条直连线路固定用：电信用新加坡【电信直连】01，联通用新加坡、韩国或日本的联通直连，移动用韩国【移动直连】01。</p>
+<p><strong>币安 WebSocket 断开，先看规律：约 24 小时断一次，是币安的连接规则。只在晚上频繁断、恢复慢，多半是线路。按「币安规则 → 本地设备 → 线路」三段排查。</strong></p>
+<p>线路问题的解决办法是按你家运营商选一条直连线路固定用：电信用韩国【电信直连】01，联通用韩国【联通直连】01，移动用韩国【移动直连】01。</p>
 <h3>WebSocket 断开和「币安打不开」不是一回事</h3>
 <p>币安网页和 App 上的实时价格、深度和成交明细，靠 WebSocket 推过来：连接建好后一直挂着，有新数据就推。断开时页面通常还能打开，只是价格停住、K 线不跳，过一会儿自己恢复。</p>
 <p>如果是整个页面打不开、一直转圈或提示网络异常，那是另一类问题，看 <a href="binance-network-route.html">币安打不开、提示网络异常怎么办</a>。</p>
@@ -71,7 +71,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 </tbody>
 </table>
 <p>对照方法很简单：把每次断开的时间记下来。间隔接近 24 小时，或者断之前收到过 <code>serverShutdown</code>，都是正常规则，自动重连就行，不用换网络。</p>
-<p>用网页和 App 看盘的人碰不到心跳和订阅频率这几条，App 会自己处理；这两条主要针对自己写程序、用量化工具的人。</p>
+<p>用网页和 App 看盘的人碰不到心跳和订阅频率这几条，App 会自己处理。这两条主要针对自己写程序、用量化工具的人。</p>
 <h3>第二段：排除本地网络和设备</h3>
 <p>币安规则对不上，再看你这一端。下面几种情况，换线路也解决不了：</p>
 <ul>
@@ -80,7 +80,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <li><strong>客户端在几个节点之间自动跳。</strong> 开着「自动选择」「负载均衡」时，出口一换，原来的连接就断了。固定一条线路，设置方法见 <a href="https://dengyue.xyz/help">帮助中心</a>。</li>
 <li><strong>程序本身的问题</strong>（写程序的人看）：没回 pong、重连没加等待时间、单个连接订阅太多。按上面那张表逐项改。</li>
 </ul>
-<p>一个快速对照：手机关掉 Wi-Fi，用流量连同一条线路，打开币安同一个交易对。手机也跟着断，多半是币安那边或这条线路；只有家里宽带断，先查路由器和 Wi-Fi，再看第三段。</p>
+<p>一个快速对照：手机关掉 Wi-Fi，用流量连同一条线路，打开币安同一个交易对。手机也跟着断，多半是币安那边或这条线路。只有家里宽带断，先查路由器和 Wi-Fi，再看第三段。</p>
 <h3>第三段：判断是不是线路的问题</h3>
 <p>前两段都排除后，满足下面的特征，基本可以确定是线路：</p>
 <ol>
@@ -103,18 +103,18 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <tbody>
 <tr>
 <td>电信</td>
-<td>新加坡【电信直连】01</td>
-<td>日本【电信直连】01、韩国【电信直连】01</td>
+<td>韩国【电信直连】01</td>
+<td>日本【电信直连】01</td>
 </tr>
 <tr>
 <td>联通</td>
-<td>新加坡【联通直连】01、韩国【联通直连】01、日本【联通直连】01</td>
-<td>—</td>
+<td>韩国【联通直连】01</td>
+<td>日本【联通直连】01</td>
 </tr>
 <tr>
 <td>移动</td>
 <td>韩国【移动直连】01</td>
-<td>新加坡【移动直连】01、韩国【移动直连】02</td>
+<td>日本【移动直连】01</td>
 </tr>
 </tbody>
 </table>
@@ -125,7 +125,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <li><strong>断线后的数据补齐。</strong> 按币安文档维护本地订单簿时，推送的更新编号如果接不上，说明中间漏了消息，要丢掉本地订单簿，重新取快照再接着更新。只重连不重建，订单簿会和实际对不上。</li>
 </ul>
 <p>程序要全天候在线，比如自动交易或需要 API 白名单的场景，放云服务器上更合适，两种做法的比较见 <a href="exchange-api-ip-whitelist.html">交易所 API 白名单：用云服务器还是固定出口线路</a>。</p>
-<p>本文只核对了币安现货行情的 WebSocket 文档；合约的连接规则另有文档，以币安官方说明为准。</p>
+<p>本文只核对了币安现货行情的 WebSocket 文档，合约的连接规则另有文档，以币安官方说明为准。</p>
 <p>套餐和价格见 <a href="https://dengyue.xyz/pricing">dengyue.xyz/pricing</a>，先买月付，按上面三段查完、测三个晚上再决定。登月VPN 是 2026 年 10 月 10 日开卖的直连线路服务。</p>
 </main>
 <footer>© 2026 登月VPN DENGYUE · 连接世界，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
