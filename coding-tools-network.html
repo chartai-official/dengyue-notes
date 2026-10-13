@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>编程助手长时间工作，网络要满足哪些条件 | 登月VPN 技术笔记</title>
-<meta name="description" content="编程助手要的是长连接：单次请求默认最长等 10 分钟，几分钟没数据也不能断，还要能重试、下载顺、晚高峰无秒级卡顿。出口选日本、新加坡、韩国或台湾。">
+<meta name="description" content="编程助手要的是长连接：单次请求默认最长等 10 分钟，几分钟没数据也不能断，还要能重试、下载顺、晚高峰无秒级卡顿。出口选日本或韩国。">
 <link rel="canonical" href="https://dengyue.xyz/blog/coding-tools-network/">
 <link rel="icon" href="icon.png" type="image/png">
 <meta name="theme-color" content="#6554f5">
@@ -23,7 +23,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <h1>编程助手长时间工作，网络要满足哪些条件</h1>
 <p class="note">本文原载于<a href="https://dengyue.xyz/blog/coding-tools-network/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
 <p><strong>编程助手对网络的要求，是长连接撑得住：一次请求最长可能等 10 分钟，几分钟没数据也不能被掐断，断了要能重试。</strong></p>
-<p>装依赖时下载也要顺。出口地区选日本、新加坡、韩国或台湾，它们在 OpenAI、Anthropic、Google 的官方支持名单里（2026-10-11 核对）。</p>
+<p>装依赖时下载也要顺。出口地区选日本或韩国，两地都在 OpenAI、Anthropic、Google 的官方支持名单里（2026-10-11 核对）。</p>
 <p>本文以 Claude Code 的官方文档为例，参数均于 2026-10-11 核对。</p>
 <h3>出口选哪里</h3>
 <p>编程助手背后是 AI 服务，按 AI 服务的支持地区选出口。以 Claude Code 为例，Anthropic 的 <a href="https://www.anthropic.com/supported-countries">支持地区政策</a> 开头把「Claude.ai, Claude Code, and Cowork」和 API 列在同一份名单下，日本、新加坡、韩国、台湾、美国都在列，香港不在。</p>
@@ -39,27 +39,27 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <tbody>
 <tr>
 <td>电信</td>
-<td>新加坡【电信直连】01</td>
-<td>日本【电信直连】01、韩国【电信直连】01、台湾【电信直连】01</td>
+<td>韩国【电信直连】01</td>
+<td>日本【电信直连】01</td>
 </tr>
 <tr>
 <td>联通</td>
-<td>新加坡【联通直连】01、日本【联通直连】01、韩国【联通直连】01</td>
-<td>台湾【联通直连】01</td>
+<td>韩国【联通直连】01</td>
+<td>日本【联通直连】01</td>
 </tr>
 <tr>
 <td>移动</td>
 <td>韩国【移动直连】01</td>
-<td>韩国【移动直连】02、新加坡【移动直连】01、日本【移动直连】01、台湾【移动直连】01</td>
+<td>日本【移动直连】01</td>
 </tr>
 </tbody>
 </table>
-<p>账户和地区规则以平台为准，固定一个出口地区、少来回切换最稳妥。美国【三网直连】01 是日常上网线路，不承诺 AI 用途。</p>
+<p>账户和地区规则以平台为准，固定一个出口地区、少来回切换最稳妥。登月VPN 的美国线路是日常上网线路，不承诺 AI 用途。</p>
 <h3>编程助手的网络流量是什么样子</h3>
 <p>和打开网页不同，编程助手的请求有三个特点。下面的数字都来自 Claude Code 官方文档的 <a href="https://code.claude.com/docs/en/env-vars">环境变量</a> 和 <a href="https://code.claude.com/docs/en/network-config">网络配置</a> 两页。</p>
 <p><strong>请求时间长。</strong> <code>API_TIMEOUT_MS</code> 的默认值是 600000 毫秒，即 10 分钟。文档也提到，网络慢时请求可能等到超时。</p>
 <p><strong>中间可能长时间没数据。</strong> 文档里有「流空闲看门狗」：回答以流的形式传回，如果太久没有新数据到达，工具会主动关掉这条连接。<code>CLAUDE_STREAM_IDLE_TIMEOUT_MS</code> 明确设置时最小值是 300000 毫秒（5 分钟），文档解释这样定是为了容纳模型长时间思考的停顿。反过来说，网络这一侧如果在几分钟没数据时就把连接断掉，任务会中途失败。</p>
-<p><strong>失败会自动重试，但次数有限。</strong> <code>CLAUDE_CODE_MAX_RETRIES</code> 默认重试 10 次。偶尔断一次可以被重试吸收；晚高峰反复断，重试就可能耗尽。</p>
+<p><strong>失败会自动重试，但次数有限。</strong> <code>CLAUDE_CODE_MAX_RETRIES</code> 默认重试 10 次。偶尔断一次可以被重试吸收，晚高峰反复断，重试就可能耗尽。</p>
 <p>另外，需要访问的不止一个域名。网络配置页列出了 <code>api.anthropic.com</code>、<code>claude.ai</code>、<code>platform.claude.com</code>、<code>downloads.claude.ai</code>、<code>registry.npmjs.org</code>、<code>github.com</code> 等一串主机，分别用于 API 请求、登录、更新和插件安装。</p>
 <h3>这些特点对网络意味着什么</h3>
 <table>
@@ -94,7 +94,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 </tbody>
 </table>
 <h3>登月VPN 选线用的标准</h3>
-<p>我们给自己线路定的晚高峰标准是：亚洲线路平均延迟 ≤120ms、远距离 ≤230ms，不能出现 ≥1 秒的卡顿，每 8 个包最多丢 1 个；每次测量单独判断，八成以上的测量达标才算合格。</p>
+<p>选线时可以参考的晚高峰标准是：亚洲线路平均延迟 ≤120ms、远距离 ≤230ms，不能出现 ≥1 秒的卡顿，每 8 个包最多丢 1 个。</p>
 <p>同一条线路，晚上 8 点和 11 点的表现可能差很多，只测一个时段看不出来。所以要在 20:00–23:00 分几个时段测，电信、联通、移动分开看。完整测法见 <a href="peak-hour-test-method.html">晚高峰实测方法</a>。</p>
 <h3>自己怎么测</h3>
 <ol>
@@ -104,7 +104,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <li>记下：任务有没有中途报网络错误、工具重试了几次、依赖安装有没有失败。</li>
 <li>手机热点和家里宽带各测一次。</li>
 </ol>
-<p>延迟、丢包这些指标怎么读，见 <a href="speedtest-buying-guide.html">机场测速怎么看</a>；视频会议、远程桌面这类同样需要连续连接的场景，见 <a href="remote-work-vpn-choice.html">远程办公 VPN 怎么选</a>。</p>
+<p>延迟、丢包这些指标怎么读，见 <a href="speedtest-buying-guide.html">机场测速怎么看</a>。视频会议、远程桌面这类同样需要连续连接的场景，见 <a href="remote-work-vpn-choice.html">远程办公 VPN 怎么选</a>。</p>
 <h3>下一步</h3>
 <ul>
 <li>三家 AI 的名单对照：<a href="ai-tools-network-choice.html">ChatGPT、Claude、Gemini 选哪个出口地区</a>。</li>
