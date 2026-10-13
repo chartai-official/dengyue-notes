@@ -32,7 +32,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <li><strong>固定 ≠ 原生、住宅。</strong> 那是 IP 归属和定位的问题，见<a href="ip-type-choice.html">机房 IP、住宅 IP、原生 IP 有什么区别</a>。</li>
 </ul>
 <h3>需要固定 IP 的情况</h3>
-<p>判断方法很简单：<strong>有没有哪个系统要你事先登记 IP？</strong> 有，就需要；没有，基本不需要。</p>
+<p>判断方法很简单：<strong>有没有哪个系统要你事先登记 IP？</strong> 有，就需要。没有，基本不需要。</p>
 <table>
 <thead>
 <tr>
@@ -64,7 +64,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 </tr>
 </tbody>
 </table>
-<p>拿交易所 API 举例。OKX 的 API 帮助页写着：每个 API Key 最多绑定 20 个 IP 地址；没有绑定 IP、又带交易或提币权限的 Key，连续 14 天不用会被自动删除（页面更新于 2026-09-28，我们 2026-10-11 核对）。也就是说，长期用 API 交易，绑 IP 基本绕不开。具体选云服务器还是固定出口线路，我们在<a href="exchange-api-ip-whitelist.html">交易所 API 白名单</a>里展开讲。</p>
+<p>拿交易所 API 举例。OKX 的 API 帮助页写着：每个 API Key 最多绑定 20 个 IP 地址。没有绑定 IP、又带交易或提币权限的 Key，连续 14 天不用会被自动删除（页面更新于 2026-09-28，我们 2026-10-11 核对）。也就是说，长期用 API 交易，绑 IP 基本绕不开。具体选云服务器还是固定出口线路，我们在<a href="exchange-api-ip-whitelist.html">交易所 API 白名单</a>里展开讲。</p>
 <h3>用普通节点就够的情况</h3>
 <ul>
 <li><strong>看网页、刷视频、社交软件。</strong> 网站不关心你的 IP 是不是每次一样。</li>
@@ -81,7 +81,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 <li><strong>换线路时 IP 会不会跟着变？</strong> 一般会变。如果你把 IP 填进了白名单，就固定用那一条。</li>
 </ol>
 <h3>登月VPN 的线路是什么情况</h3>
-<p>登月VPN 每条线路对应<strong>一个固定出口 IP</strong>，比如「新加坡【电信直连】01」正常情况下都从同一个新加坡地址出去，不在多个地址之间轮换。</p>
+<p>登月VPN <strong>每条线路的出口 IP 固定，不在多个国家之间自动切换</strong>。比如你用「韩国【电信直连】01」，正常情况下每次都从同一个韩国地址出去，不在多个地址之间轮换。</p>
 <p>但要说清楚两点：</p>
 <ul>
 <li><strong>它是共享的，不是独享。</strong> 用这条线路的多位用户共用这个出口。</li>
@@ -89,7 +89,7 @@ footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font
 </ul>
 <p>所以：</p>
 <ul>
-<li>日常使用、看行情，按你的运营商选线就行；只要不换线路，网站每次看到的都是同一个出口地点。</li>
+<li>日常使用、看行情，按你的运营商选线就行。只要不换线路，网站每次看到的都是同一个出口地点。</li>
 <li>偶尔用 API 查数据、小规模测试，可以把登月VPN 某条线路的出口填进白名单，但要接受「共享」和「可能更换」这两点。</li>
 <li>正式跑量化、资金量大的，更适合租一台自己独占 IP 的云服务器，程序直接从那里连交易所。</li>
 </ul>
