@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>火币网登录不了：先分清网络、App 版本还是账户 | 登月VPN 技术笔记</title>
+<meta name="description" content="火币（HTX）登录不了，先看卡在哪一步：页面打不开是网络，来回跳或一直未登录看浏览器和 App，验证码、二次验证过不去是账户。">
+<link rel="canonical" href="https://dengyue.xyz/blog/htx-login-failed/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>火币网登录不了：先分清网络、App 版本还是账户</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/htx-login-failed/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>火币（HTX）登录不了，先看卡在哪一步：页面打不开、转圈是网络，换线路。来回跳、一直「未登录」，查浏览器和 App。验证码、二次验证过不去是账户，找 HTX 客服。</strong></p>
+<p>三类问题的解决办法完全不同。账户问题换多少条线路都没用，网络问题重置密码也没用。下面按这三类分开说，HTX 的做法都来自它帮助中心的原页，2026-10-14 核对。火币和 HTX 是同一家，更名经过见 <a href="htx-route-choice.html">火币（HTX）用哪条线路</a>。</p>
+<h3>先看卡在哪一步</h3>
+<table>
+<thead>
+<tr>
+<th>你看到的</th>
+<th>属于哪一类</th>
+<th>先做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>登录页打不开、一直转圈、提示「网络异常」</td>
+<td>网络</td>
+<td>先看官方公告，再换一条线路对照，按运营商选线</td>
+</tr>
+<tr>
+<td>输完账号密码，页面来回跳转，状态一直是「未登录」</td>
+<td>浏览器或 App</td>
+<td>查 Cookie 和跨站跟踪设置，更新 App</td>
+</tr>
+<tr>
+<td>页面正常，但验证码、谷歌验证器的码过不去，或收不到验证码</td>
+<td>账户</td>
+<td>按 HTX 的验证码和二次验证说明处理</td>
+</tr>
+<tr>
+<td>手机丢了、验证器没了，或怀疑账户被别人登过</td>
+<td>账户安全</td>
+<td>只通过官方渠道联系 HTX 客服</td>
+</tr>
+</tbody>
+</table>
+<h3>网络：登录页打不开、一直转圈</h3>
+<p>这一类和其他页面打不开是同一个问题，只是你刚好在登录时碰到。先看 HTX 官方公告有没有维护。没有维护，就在同一时间换一条线路对照：换了就好，问题在原来那条线路上。完整的判断步骤见 <a href="exchange-not-loading.html">交易所打不开、网络异常：先判断是线路还是平台</a>。</p>
+<p>确认是网络问题，就按你家宽带的运营商选一条直连线路固定用：</p>
+<table>
+<thead>
+<tr>
+<th>你的宽带</th>
+<th>推荐线路</th>
+<th>也可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电信</td>
+<td>韩国【电信直连】01</td>
+<td>香港【电信直连】01、日本【电信直连】01</td>
+</tr>
+<tr>
+<td>联通</td>
+<td>韩国【联通直连】01</td>
+<td>香港【联通直连】01、日本【联通直连】01</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>韩国【移动直连】01</td>
+<td>香港【移动直连】01、日本【移动直连】01</td>
+</tr>
+</tbody>
+</table>
+<p>账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。登录前在客户端里手动选定一条线路，关掉「自动选择」「负载均衡」这类会自动换节点的模式，免得登录到一半出口变了。</p>
+<h3>浏览器：页面来回跳、一直显示「未登录」</h3>
+<p>账号密码都对，页面却在登录页和首页之间来回跳，或者状态一直是「未登录」，一般不是网络，而是浏览器不让网站保存登录状态。</p>
+<p>HTX 帮助中心有一篇专门讲这个现象（<a href="https://www.htx.com/support/360000200901">原页</a>）。它发布于 2018 年 12 月 20 日，标题写的还是当年的合约站 hbdm.com，但原因和办法对现在的网页登录同样适用：</p>
+<ul>
+<li><strong>Safari（Mac）</strong>：在隐私设置里取消勾选「阻止跨站跟踪」，关掉 Safari 重新打开或刷新。</li>
+<li><strong>Chrome</strong>：在网站设置里允许网站保存和读取 Cookie。</li>
+<li><strong>Firefox</strong>：在「隐私与安全」里接受 Cookie 和网站数据。</li>
+</ul>
+<p>那篇文章写于 2018 年，各浏览器现在的菜单名称和位置已经变了，找不到原样的选项，就在设置里搜「Cookie」或「跨站跟踪」。浏览器装了广告拦截、隐私保护类插件的，也先临时关掉再试一次。</p>
+<h3>App：网页能登录，App 登不上</h3>
+<p>同一个账号，电脑网页能登录、App 登不上，问题就缩小到 App 这一端。可以按这个顺序试：</p>
+<ol>
+<li><strong>到官方下载页更新 App。</strong> 入口是 <a href="https://www.htx.com/download">htx.com/download</a>，不要从搜索结果里的第三方链接下载。</li>
+<li><strong>手机和电脑用同一条线路再登一次。</strong> 电脑能登、手机用同一条线路还是登不上，问题多半在 App 本身，更新或重装后再试。</li>
+</ol>
+<h3>账户：验证码、二次验证过不去</h3>
+<p>页面都正常，就是在验证这一步过不去，属于账户问题，和线路无关。</p>
+<p><strong>收不到验证码。</strong> HTX 的二次验证说明（<a href="https://www.htx.com/en-us/support/94947627897379/">原页</a>，2025-03-28）里的做法：</p>
+<ul>
+<li>点了「发送」后等一会儿，验证码到达可能有延迟。</li>
+<li>短信：<strong>不要反复点</strong>，HTX 原文专门提醒了这一点。确认手机有信号、没欠费，关掉可能拦短信的软件，短信收件箱满了先删一些旧短信。登录页还有「语音验证」，可以改成接电话听验证码。</li>
+<li>邮件：查垃圾箱，确认没有屏蔽 HTX 的邮件。用公司邮箱的，HTX 建议换个人邮箱，公司邮件服务器可能拦下验证码。需要加白名单的 HTX 发件地址，原页里列了完整清单。</li>
+</ul>
+<p>各家交易所验证码收不到的通用查法，见 <a href="exchange-verification-code-missing.html">交易所验证码收不到：短信、邮件、验证码页面分别怎么查</a>。</p>
+<p><strong>谷歌验证器（GA）的码不对。</strong> HTX 提到两种情况：GA 和 HTX App 的时区不一致，改成一致再试。重装过 GA，验证码就和原来的不一样了。另外要知道，改过二次验证之后 24 小时内不能提币和法币划转，充值和交易不受影响。</p>
+<p><strong>手机丢了、验证器没备份。</strong> HTX 的处理办法写在 <a href="https://www.htx.com/support/360000191262">Resolving 2FA Issues</a>（2019-12-27）：通过官方客服邮箱申请解绑，需要提供手持身份证件的照片。解绑后会收到邮件，再重新设置新的验证方式。HTX 建议绑定 GA 时就保存好私钥或二维码，换手机时可以直接恢复，省掉这一步。</p>
+<p><strong>怀疑账户被别人登过。</strong> HTX 的账户安全指南（<a href="https://www.htx.com/en-us/support/74947630493269/">原页</a>，2025-03-19）要求立即联系客服，并核对几件事：有没有把密码、验证码给过别人，有没有点过陌生人发的链接、扫过陌生二维码，账户里的 API 是不是自己建的。账户里没有资产的，尽快改登录密码并开启谷歌验证。账户里有资产的，按指南把上面这些情况告诉客服，需要冻结账户时，客服会要求提供手持证件照片。</p>
+<h3>登录前先认准官方入口</h3>
+<p>登录出问题时最容易着急，也最容易被假客服、假网站钓走账号。HTX 的账户安全指南写得很明确：</p>
+<ul>
+<li>HTX 客服<strong>不会主动联系用户</strong>，也不会索要密码、验证码这类敏感信息。</li>
+<li>不要在可疑网站上输入密码和验证码，不要点陌生人发的链接、扫陌生二维码。</li>
+<li>收到自称 HTX 的消息、网址或账号，到官网页面底部的「Media Verifier」（官方渠道验证）里查一下真假。</li>
+</ul>
+<p>搜索「HTX 登录」时，结果里可能混着非官方的「登录指南」页面。登录入口以官网和官方 App 为准。</p>
+<h3>三类问题分别怎么办</h3>
+<table>
+<thead>
+<tr>
+<th>判断结果</th>
+<th>怎么办</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>网络：页面打不开、转圈</td>
+<td>先看公告，再换线路对照，确认后按运营商选一条线路固定用</td>
+</tr>
+<tr>
+<td>浏览器：来回跳、一直未登录</td>
+<td>允许 Cookie、关掉阻止跨站跟踪，临时关隐私插件</td>
+</tr>
+<tr>
+<td>App：网页能登、App 不能</td>
+<td>官方下载页更新，同一条线路下和电脑对照</td>
+</tr>
+<tr>
+<td>账户：验证码、二次验证过不去</td>
+<td>按 HTX 原页处理，短信别反复点，核对 GA 时区，必要时走官方客服</td>
+</tr>
+</tbody>
+</table>
+<p>同时在用其他交易所的，各家按电信、联通、移动该选哪条线，见 <a href="exchange-route-choice.html">交易所用哪条线路：10 家交易所按电信、联通、移动选线</a>。</p>
+<p>登月VPN 的客户端设置和连接报错，看<a href="https://dengyue.xyz/help">官网帮助中心</a>，套餐和价格见 <a href="https://dengyue.xyz/pricing">dengyue.xyz/pricing</a>。登月VPN 是 2026 年 10 月 10 日开卖的直连线路服务。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 直连交易所，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
