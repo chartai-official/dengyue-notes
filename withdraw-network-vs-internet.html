@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>交易所提币时选「网络」是什么：链上网络和上网线路不是一回事 | 登月VPN 技术笔记</title>
+<meta name="description" content="币安提币页的「网络」指币走哪条区块链，按收款方支持的选。提币页打不开、加载慢、地址簿刷不出来，才是上网线路的问题。">
+<link rel="canonical" href="https://dengyue.xyz/blog/withdraw-network-vs-internet/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>交易所提币时选「网络」是什么：链上网络和上网线路不是一回事</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/withdraw-network-vs-internet/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>交易所提币时让你选的「网络」，指这笔币走哪条区块链，比如 USDT 可以走 TRC20、ERC20、BSC。它和你用的上网线路没有关系，只看收款方支持哪条链。</strong></p>
+<p>提币页打不开、加载慢、地址簿刷不出来，才是上网线路的问题。搜「币安网络」的人，有的是问提币选哪条链，有的是页面打不开。两个「网络」名字一样，出了问题的解决办法完全不同，下面分开讲。币安的做法都来自它帮助中心的提币说明（<a href="https://www.binance.com/en/support/faq/how-to-withdraw-crypto-from-binance-115003670492">原页</a>，2026-09-18 更新，2026-10-14 核对）。</p>
+<h3>两个「网络」分别指什么</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>提币页的「网络」</th>
+<th>上网线路</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指什么</td>
+<td>币在哪条区块链上转，如 TRC20、ERC20、BSC</td>
+<td>你的手机、电脑怎么连到交易所网站</td>
+</tr>
+<tr>
+<td>在哪里选</td>
+<td>交易所提币页，选币之后</td>
+<td>你的 VPN 或机场客户端</td>
+</tr>
+<tr>
+<td>由谁决定</td>
+<td>收款方支持哪条链</td>
+<td>你家宽带的运营商和出口地区</td>
+</tr>
+<tr>
+<td>选错的后果</td>
+<td>币可能到不了，币安原文说会永久损失</td>
+<td>页面慢、打不开，换一条就好</td>
+</tr>
+<tr>
+<td>跟另一个有没有关系</td>
+<td>换线路不会改变链上网络</td>
+<td>选哪条链不影响网页打开速度</td>
+</tr>
+</tbody>
+</table>
+<p>一句话：链上网络管「币怎么走」，上网线路管「你怎么连上交易所」。</p>
+<h3>提币页的「网络」怎么选</h3>
+<p>币安的说明写得很直接：网络选项取决于收款的外部钱包或交易所提供哪些。按这个顺序做：</p>
+<ol>
+<li><strong>先去收款方查它支持哪条链。</strong> 收款方是另一家交易所，就在它的充值页选同一个币，看它列出的网络。收款方是钱包，看钱包里这个币的地址属于哪条链。</li>
+<li><strong>在币安选同一条链。</strong> 币安原文举的例子：ERC20 的币只能发到 ERC20 地址，BSC 的币只能发到 BSC 地址。网页版填好地址后，系统会按地址自动选网络，自动选的结果也要再看一眼。</li>
+<li><strong>别只看手续费。</strong> 币安英文原页用大写强调了一句：不要选手续费最便宜的那个。便宜的链如果收款方不支持，币就到不了。</li>
+<li><strong>该填 Memo 的要填。</strong> 币安提到，XRP、EOS 这类网络转账时必须填 Memo（也叫标签），不填对方识别不到是谁的。</li>
+<li><strong>新地址先转一小笔。</strong> 币安建议先发少量，确认地址信息正确再发剩下的。</li>
+</ol>
+<p>输入金额后，页面会显示这条网络的手续费和对方实际到账的数量。不同网络手续费不一样，在两三条收款方都支持的链里比一下即可。</p>
+<p><strong>选错了链会怎样。</strong> 币安提币说明的原话是：发到错误的网络会造成永久损失。所以确认之前，把地址和网络对照收款方再核一遍。用 USDT 给订阅付款时手续费怎么算、转账前核对哪几项，见 <a href="usdt-payment-cost.html">用 USDT 买订阅：手续费怎么算，转账前核对这 7 项</a>。</p>
+<h3>什么情况才是上网线路的问题</h3>
+<p>下面这些现象和选哪条链无关，是你的设备连不顺交易所：</p>
+<ul>
+<li>提币页一直转圈，打不开。</li>
+<li>选完币，网络列表、手续费半天出不来。</li>
+<li>地址簿刷不出来，或者点了提币按钮没反应、提示「网络异常」。</li>
+<li>安全验证那一步，验证码页面加载不出来。</li>
+</ul>
+<p>先排除平台：看币安公告有没有维护，再在同一时间换一条线路对照。换了就好，问题在原来那条线路上。两边都不行，多半是平台。完整判断步骤见 <a href="exchange-not-loading.html">交易所打不开、网络异常：先判断是线路还是平台</a>。</p>
+<p>确认是线路问题，就按你家宽带的运营商选一条直连线路固定用：</p>
+<table>
+<thead>
+<tr>
+<th>你的宽带</th>
+<th>推荐线路</th>
+<th>也可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电信</td>
+<td>韩国【电信直连】01</td>
+<td>日本【电信直连】01</td>
+</tr>
+<tr>
+<td>联通</td>
+<td>韩国【联通直连】01</td>
+<td>日本【联通直连】01</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>韩国【移动直连】01</td>
+<td>日本【移动直连】01</td>
+</tr>
+</tbody>
+</table>
+<p>账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。提币前在客户端里手动选定一条线路，关掉「自动选择」「负载均衡」这类会自动换节点的模式，免得做安全验证时出口变了。币安打不开的其他原因，见 <a href="binance-network-route.html">币安打不开、提示网络异常怎么办</a>。</p>
+<h3>换线路能解决哪些、不能解决哪些</h3>
+<table>
+<thead>
+<tr>
+<th>遇到的情况</th>
+<th>换线路有没有用</th>
+<th>该做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提币页、地址簿加载慢或打不开</td>
+<td>有用</td>
+<td>按运营商换一条直连线路，固定使用</td>
+</tr>
+<tr>
+<td>不知道该选 TRC20 还是 ERC20</td>
+<td>没用</td>
+<td>去收款方充值页看它支持哪条链</td>
+</tr>
+<tr>
+<td>选的链收款方不支持</td>
+<td>没用</td>
+<td>换一条双方都支持的链</td>
+</tr>
+<tr>
+<td>已经发到了错误的链</td>
+<td>没用</td>
+<td>尽快联系收款方客服，说明币种、网络和交易哈希</td>
+</tr>
+<tr>
+<td>提币已发出，对方还没到账</td>
+<td>一般没用</td>
+<td>用交易哈希在区块链浏览器查确认进度</td>
+</tr>
+</tbody>
+</table>
+<p>最后一行要分清：提币已经发出、链上在等确认，是区块链的事，和你这边的网络无关。只有页面打不开、看不到记录时，才需要换线路。</p>
+<p>同时在用其他交易所的，各家按电信、联通、移动该选哪条线，见 <a href="exchange-route-choice.html">交易所用哪条线路：10 家交易所按电信、联通、移动选线</a>。</p>
+<p>登月VPN 的客户端设置和连接报错，看<a href="https://dengyue.xyz/help">官网帮助中心</a>，套餐和价格见 <a href="https://dengyue.xyz/pricing">dengyue.xyz/pricing</a>。登月VPN 是 2026 年 10 月 10 日开卖的直连线路服务。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 直连交易所，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
