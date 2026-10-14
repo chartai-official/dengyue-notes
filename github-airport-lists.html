@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub 上的机场推荐列表能信吗：怎么核对 | 登月VPN 技术笔记</title>
+<meta name="description" content="GitHub 机场推荐列表可以当线索，不能直接当结论。先看最近提交记录、推广链接、测试方法和 Issues，再决定要不要买月付自己测。附核对清单。">
+<link rel="canonical" href="https://dengyue.xyz/blog/github-airport-lists/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>GitHub 上的机场推荐列表能信吗：怎么核对</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/github-airport-lists/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>GitHub 上的机场推荐列表可以当线索，不能直接当结论。先用提交记录、链接和 Issues 核对它是不是最近维护过、和机场有没有推广关系，再决定要不要买月付自己测。</strong></p>
+<p>核对分 5 步：看最近一次真正改内容的提交，看链接是不是推广链接，看有没有写测试方法，看 Issues 和星标，再分清推荐列表和免费节点。星标多、标题写着「2026 最新」，都不等于内容是最近核对过的。</p>
+<p>我们是登月VPN，自己也卖线路，所以这篇不点评任何一个具体仓库，只讲怎么核对。商业测评网站的排行榜怎么读，另见 <a href="vpn-ranking-evidence.html">VPN 排行榜怎么读</a>。</p>
+<h3>GitHub 列表和测评网站有什么不同</h3>
+<p>搜「机场推荐 github」，找到的大多是个人或小团队维护的 README：一张表，列着机场名字、价格、节点地区，后面跟一个注册链接。它和测评网站有三点不一样：</p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>GitHub 列表</th>
+<th>测评网站</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>改动记录</td>
+<td>每次修改都留在提交历史里，人人可查</td>
+<td>通常只看到页面上写的更新日期</td>
+</tr>
+<tr>
+<td>推广披露</td>
+<td>很少有单独的披露页，要自己看链接</td>
+<td>一般有披露页或页脚说明</td>
+</tr>
+<tr>
+<td>测试方法</td>
+<td>多数只给结论，少数附测速截图</td>
+<td>部分有方法论页</td>
+</tr>
+</tbody>
+</table>
+<p>提交历史公开，是 GitHub 列表最大的好处。下面的核对方法主要就是用好这一点。</p>
+<h3>第一步：看最近一次「改内容」的提交</h3>
+<p>打开仓库，点文件列表上方的提交记录（commits），看最近几次提交改了什么。</p>
+<ul>
+<li><strong>只改了标题里的年份或日期</strong>：内容不一定动过。把「2025」改成「2026」也算一次提交，仓库首页显示的最近提交时间也会跟着变。</li>
+<li><strong>改了表格里的价格、地区、链接</strong>：说明维护者确实在跟进。点开那次提交，看改了哪几行。</li>
+<li><strong>很久没有提交</strong>：机场的价格、线路、运营状态变化很快，半年没动过的列表，参考价值有限。</li>
+</ul>
+<p>还要知道一点：在自己电脑上做的提交，日期取自那台电脑的时间，而且可以手动改。作者日期可以用 <code>--date</code> 选项指定，提交日期可以用 <code>GIT_COMMITTER_DATE</code> 环境变量指定（<a href="https://git-scm.com/docs/git-commit">Git 官方文档 git-commit</a>，2026-10-13 核对）。所以日期只能说明「有人这样记录」，要配合改动内容一起看。</p>
+<h3>第二步：看链接是不是推广链接</h3>
+<p>把鼠标放在注册链接上，或者复制出来看完整地址：</p>
+<ul>
+<li>地址里带 <code>aff=</code>、<code>code=</code>、<code>ref=</code>、<code>invite</code> 之类的参数，通常是推广链接，点进去注册，维护者可以拿到返佣。</li>
+<li>链接先跳到一个短链或中转页，再到机场官网，也常见于推广。</li>
+</ul>
+<p>推广本身很普遍，不代表列表一定有偏差。要注意的是：README 里有没有写明「链接含推广」？如果每个机场都带推广链接、却完全没写，你就要把排序当成作者的选择，而不是测出来的结果。</p>
+<h3>第三步：看有没有测试方法</h3>
+<p>很多列表只写「速度快」「稳定」「推荐」。能复核的写法至少要写清在哪测（大陆家宽还是海外服务器）、什么时段、哪个运营商、测了几次，这几项的逐项读法见 <a href="vpn-ranking-evidence.html">VPN 排行榜怎么读</a>。</p>
+<p>列表里附了测速截图的，按 <a href="review-missing-details.html">一篇机场实测缺少哪些信息就难以复核</a> 那 9 项逐项对一下。什么方法都没写的，只能当「有这几家」的名单用。</p>
+<h3>第四步：看 Issues 和星标</h3>
+<p><strong>Issues</strong> 是读者给仓库提问题的地方。翻一翻已关闭和未关闭的：</p>
+<ul>
+<li>有没有人反馈「这家跑路了」「链接失效了」「价格变了」？</li>
+<li>维护者有没有回复、有没有据此修改列表？</li>
+<li>仓库是不是关闭了 Issues？关了就少了一个读者反馈的渠道。</li>
+</ul>
+<p><strong>星标</strong> 只能当热度参考。GitHub 官方说明里，星标用来收藏仓库、发现相似项目，也表示对维护者的认可（<a href="https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars">GitHub 文档：用星标保存仓库</a>，2026-10-13 核对）。它反映的是多少人收藏过，不是有多少人用过列表里的机场。GitHub 的《可接受使用政策》明确禁止自动刷星、刷关注这类「排名滥用」（<a href="https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies">GitHub Acceptable Use Policies 第 4 节</a>，2026-10-13 核对），平台禁止，说明确实有人会这么做。星标很多、Issues 却很冷清，就要多留个心。</p>
+<h3>第五步：分清「推荐列表」和「免费节点」</h3>
+<p>搜 GitHub 时，还会碰到另一类仓库：直接贴出免费订阅链接或节点。它和推荐列表是两回事：</p>
+<ul>
+<li>推荐列表只是介绍机场，你最后还是去机场官网买。</li>
+<li>免费节点仓库给的是现成的连接，你的流量会经过一台你不知道是谁在运营的服务器。</li>
+</ul>
+<p>免费节点的限制和风险，我们在 <a href="free-vs-paid-airport.html">免费机场和付费订阅怎么选</a> 里单独讲过。登录交易所、钱包这类账户，尽量用你知道是谁在运营、出了问题能找到人的服务。</p>
+<h3>核对清单</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>核对项</th>
+<th>怎么看</th>
+<th>没通过意味着什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>最近一次改内容的提交</td>
+<td>点开提交，看改了表格还是只改了年份</td>
+<td>内容可能早就过时</td>
+</tr>
+<tr>
+<td>2</td>
+<td>提交频率</td>
+<td>看最近几个月有没有持续改动</td>
+<td>机场变化没人跟进</td>
+</tr>
+<tr>
+<td>3</td>
+<td>推广链接</td>
+<td>看链接参数和跳转</td>
+<td>排序可能跟返佣有关</td>
+</tr>
+<tr>
+<td>4</td>
+<td>推广披露</td>
+<td>README 里有没有写</td>
+<td>看不出作者和机场的利益关系</td>
+</tr>
+<tr>
+<td>5</td>
+<td>测试方法</td>
+<td>地点、时段、运营商、次数</td>
+<td>「推荐」只是作者的个人感受</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Issues 反馈</td>
+<td>有没有跑路、失效的反馈和回复</td>
+<td>少了读者纠错的渠道</td>
+</tr>
+<tr>
+<td>7</td>
+<td>机场本身的记录</td>
+<td>域名、官网公告、网页存档</td>
+<td>列表上的「老牌」可能无从核对</td>
+</tr>
+</tbody>
+</table>
+<p>第 7 项的具体查法，见 <a href="established-airport-evidence.html">老牌机场怎么判断</a>。</p>
+<h3>核对完之后怎么用</h3>
+<p>核对下来通过项较多的列表，可以从里面挑两三家当候选，再按 <a href="vpn-ranking-evidence.html">VPN 排行榜怎么读</a> 里「名次怎么用」的办法，去官网看条款、先买月付、在自己家的网络上测。</p>
+<p>登月VPN 的线路按运营商分，电信、联通、移动各有对应的直连线路，选线时先看你家宽带是哪个运营商。套餐有月付，价格以 USDT 计，见 <a href="https://dengyue.xyz/pricing">套餐页</a>。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 直连交易所，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
