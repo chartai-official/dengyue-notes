@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google AI Studio 支持哪些地区：官方名单怎么看，出口选哪里 | 登月VPN 技术笔记</title>
+<meta name="description" content="AI Studio 官方名单列了日本、韩国、新加坡、台湾、美国，没有香港。打不开还可能是年龄验证。按运营商推荐登月VPN 的日本、韩国线路。">
+<link rel="canonical" href="https://dengyue.xyz/blog/google-ai-studio-region/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>Google AI Studio 支持哪些地区：官方名单怎么看，出口选哪里</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/google-ai-studio-region/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>Google AI Studio 的官方可用地区名单里有日本、韩国、新加坡、台湾和美国，没有香港和中国大陆。想稳定用它，出口选日本或韩国。</strong></p>
+<p>名单是 Google 开发者文档里的 <a href="https://ai.google.dev/gemini-api/docs/available-regions?hl=en">Available regions</a>，页面标注 2026-04-28 更新，本文于 2026-10-15 核对。</p>
+<h3>按运营商选出口</h3>
+<p>日本和韩国都在名单里，所以下面两列都可以用，韩国线路是登月VPN 的主推。</p>
+<table>
+<thead>
+<tr>
+<th>你的宽带</th>
+<th>推荐</th>
+<th>也可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电信</td>
+<td>韩国【电信直连】01</td>
+<td>日本【电信直连】01</td>
+</tr>
+<tr>
+<td>联通</td>
+<td>韩国【联通直连】01</td>
+<td>日本【联通直连】01</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>韩国【移动直连】01</td>
+<td>日本【移动直连】01</td>
+</tr>
+</tbody>
+</table>
+<p>账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。登月VPN 的美国线路是日常上网线路，不承诺 AI 用途，AI Studio 请用上表的日本或韩国线。香港不在这张名单里，名单对照见下一节。</p>
+<h3>官方名单里有什么，没有什么</h3>
+<p>这张名单覆盖 Google AI Studio 和 Gemini API，页面原话是它们「available in the following countries and territories」，后面按字母顺序列出各国家和地区。和我们有关的几个：</p>
+<table>
+<thead>
+<tr>
+<th>地区</th>
+<th>名单里</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日本、韩国、新加坡、台湾、美国</td>
+<td>列出</td>
+</tr>
+<tr>
+<td>香港</td>
+<td>未列出</td>
+</tr>
+<tr>
+<td>中国大陆</td>
+<td>未列出</td>
+</tr>
+</tbody>
+</table>
+<p>页面没有任何一句说「某个地区即使不在名单里也可以用」，只给了一条出路：不在名单里的用户，可以改用「Gemini API in Gemini Enterprise Agent Platform」。要用的话请看 Google 的对应文档。</p>
+<h3>出口在名单里还是打不开，先查这三件事</h3>
+<p>AI Studio 打不开时，这张页面本身就是排查清单。它说你被带到这里，可能是下面三种原因之一：</p>
+<ol>
+<li><strong>地区限制</strong>：AI Studio 在你所在的地区不可用。</li>
+<li><strong>年龄要求</strong>：没有达到 18 岁的最低年龄要求。</li>
+<li><strong>账号验证</strong>：你可能有使用资格，但还没有在 Google 账号上完成年龄验证。</li>
+</ol>
+<p>所以出口选对只解决了第一项。后两项和线路无关，换线路也没用，要在 Google 账号里处理。</p>
+<h3>在 Colab 里用，看的是 Colab 实例的位置</h3>
+<p>如果你在 Google Colab 里调用 Gemini，页面有一条单独的说明：地区限制按 Colab 实例所在的区域判断，不是按你本人所在的位置。页面给的查看方法是在 Colab 里运行：</p>
+<p><code>!curl ipinfo.io</code></p>
+<p>返回的就是 Colab 实例的位置。这种情况下换本地出口线路不会改变判断结果。</p>
+<h3>怎么确认出口真的在名单里</h3>
+<p>选了日本或韩国线路后，可以按下面两步确认：</p>
+<ol>
+<li>连上线路，打开任一 IP 查询网站，看显示的国家是不是日本或韩国。</li>
+<li>再打开 AI Studio，登录后能进入主界面，说明地区这一关过了。</li>
+</ol>
+<p>登月VPN 的每条线路对应固定的出口 IP，不会每次连接换地址，适合这种需要出口稳定的场景。</p>
+<h3>网页版 Gemini 和 AI Studio 不是同一张名单</h3>
+<p>Gemini 网页版和手机 App 各有自己的官方名单，范围和 AI Studio 不一样，比如香港在网页版名单里，但不在 AI Studio 名单里。三张名单怎么对照，见 <a href="gemini-network-choice.html">Gemini 网页、App、API 用哪个地区的线路</a>。网页能用不等于 API 能用，原因见 <a href="ai-web-api-difference.html">AI 网页能用，API 就一定能用吗</a>。</p>
+<h3>下一步</h3>
+<ul>
+<li>同时用 ChatGPT、Claude、Gemini：<a href="ai-tools-network-choice.html">三家 AI 选哪个出口地区</a>，一条日本或韩国线路三家通用。</li>
+<li>看全部线路和价格：<a href="https://dengyue.xyz/regions">登月VPN 线路</a>、<a href="https://dengyue.xyz/pricing">套餐与价格</a>。</li>
+<li>客户端设置和报错：<a href="https://dengyue.xyz/help">官网帮助中心</a>。</li>
+</ul>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 直连交易所，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
