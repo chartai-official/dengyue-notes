@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TradingView 延迟 15 分钟是网络慢吗：延迟报价和实时数据 | 登月VPN 技术笔记</title>
+<meta name="description" content="股票图表延迟 15 分钟多半是数据授权，和网速无关。看图表上的延迟提示就能分清，加密货币行情另当别论。">
+<link rel="canonical" href="https://dengyue.xyz/blog/tradingview-delayed-quotes/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>TradingView 延迟 15 分钟是网络慢吗：延迟报价和实时数据</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/tradingview-delayed-quotes/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>TradingView 图表延迟 15 分钟，多半不是网络慢，而是这个品种只提供延迟版数据。先看图表有没有「Data is delayed」提示。有，换线路没用。没有但行情卡，再查网络。</strong></p>
+<p>很多人看到价格比别处慢一截，第一反应是「线路不行」。这个判断常常对不上号。下面按 TradingView 帮助中心的说明，把「数据延迟」和「网络延迟」拆开讲。内容核对日期 2026-10-15。</p>
+<h3>延迟 15 分钟，说的是数据授权</h3>
+<p>TradingView 在数据覆盖页写得很直白：只要被允许，就免费提供实时数据。有些数据因为交易所的规定，对公开展示只给延迟版，想要实时的可以另外购买（<a href="https://www.tradingview.com/data-coverage/">数据覆盖页</a>，2026-10-15 核对）。</p>
+<p>帮助中心还说明，多数股票和期货交易所对实时数据收费，TradingView 的付费套餐不包含这些费用，即使你订阅了会员也一样，需要单独买实时数据包（<a href="https://www.tradingview.com/support/solutions/43000471705-how-to-purchase-additional-market-data/">购买额外行情数据</a>，2026-10-15 核对）。</p>
+<p>所以「延迟」是品种的属性：</p>
+<ul>
+<li>数据覆盖页里，不少免费的延迟源标的就是延迟 15 分钟，也有的是 5 分钟、10 分钟或 20 分钟，不同交易所不一样。</li>
+<li>实时数据通常是单独收费的项目，价格按交易所和你的身份（专业或非专业用户）而定。</li>
+<li>同一个账号里，这个品种延迟、那个品种实时，是正常现象。</li>
+</ul>
+<p>这种延迟发生在数据源头。换成再快的线路，数据还是延迟的。</p>
+<h3>怎么确认图表是不是延迟版</h3>
+<ol>
+<li>打开那张图表，看状态栏有没有「Data is delayed」的提示（旁边还可能带一个 D 标记）。有，就是延迟数据。</li>
+<li>点图表上的市场状态，可以看到这个品种需要哪个行情订阅。</li>
+<li>想弄清品种来自哪家交易所，在搜索框输入代码，交易所名称会显示在旁边。</li>
+</ol>
+<p>另一个小线索：K 线收盘倒计时在延迟数据下可能不显示。TradingView 帮助中心列出的原因里就有「品种数据延迟」，同时还有倒计时被关闭、图表类型不支持、市场休市、电脑时间不准等原因，所以倒计时没出现，不能单独当作延迟的证据。</p>
+<h3>加密货币行情一般是实时的</h3>
+<p>TradingView 说明，它上面展示的加密货币交易所，提供的都是实时数据，不需要额外购买。数据覆盖页里，币安、Coinbase、Kraken 这类交易所的条目，也标注为实时。</p>
+<p>换句话说，如果你看的是交易所的加密货币图表，又出现了「看着慢半拍」的感觉，就不该先怪授权，而要往下查。</p>
+<h3>用了券商面板，报价可能是另一回事</h3>
+<p>在 TradingView 上连接真实券商账户后，下单面板里的报价和买卖按钮用的是券商自己的数据，不是 TradingView 的。帮助中心提醒，这可能导致行情剧烈波动时在意想不到的价格成交。图表实时、下单面板延迟，说明问题出在券商的行情订阅，不在你的网络（<a href="https://www.tradingview.com/support/solutions/43000739323-how-does-the-source-of-real-time-data-affect-the-trading-experience/">实时数据来源说明</a>，2026-10-15 核对）。</p>
+<h3>没有延迟提示，行情还是卡：再查网络</h3>
+<p>满足下面几条，更像是网络问题：</p>
+<ul>
+<li>品种是加密货币，或者图表没有延迟提示。</li>
+<li>价格会跳一下、停几秒，再突然追上。</li>
+<li>图表加载慢，或者不时断线重连。</li>
+<li>换个时段（比如非晚高峰）明显好转。</li>
+</ul>
+<p>可以按这个顺序查：</p>
+<ol>
+<li>同一时间换一条线路对照，换了就好，问题在原来的线路。</li>
+<li>网页版出问题而手机 App 正常，先排除浏览器扩展和缓存。</li>
+<li>在晚高峰时段多看几次，别只凭一次判断。具体方法见 <a href="exchange-latency-disconnect-test.html">测速快不等于行情稳：看盘断线和延迟怎么测</a>。</li>
+<li>整体打不开、提示网络异常，先走 <a href="exchange-not-loading.html">交易所打不开、网络异常：先判断是线路还是平台</a> 的步骤。</li>
+</ol>
+<p>确认是线路问题后，按你家宽带的运营商选一条直连线路固定使用，推荐如下：</p>
+<table>
+<thead>
+<tr>
+<th>你的宽带</th>
+<th>推荐线路</th>
+<th>也可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电信</td>
+<td>韩国【电信直连】01</td>
+<td>日本【电信直连】01</td>
+</tr>
+<tr>
+<td>联通</td>
+<td>韩国【联通直连】01</td>
+<td>日本【联通直连】01</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>韩国【移动直连】01</td>
+<td>日本【移动直连】01</td>
+</tr>
+</tbody>
+</table>
+<p>账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。在客户端里手动选定一条线路，关掉「自动选择」「负载均衡」这类会自动换节点的模式。各家交易所怎么选线，见 <a href="exchange-route-choice.html">交易所用哪条线路：10 家交易所按电信、联通、移动选线</a>。</p>
+<h3>一张表分清</h3>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>更可能的原因</th>
+<th>该做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股票、指数图表左上角有延迟提示</td>
+<td>数据授权</td>
+<td>买实时数据包，或接受延迟</td>
+</tr>
+<tr>
+<td>加密货币图表实时，但偶尔卡一下</td>
+<td>网络</td>
+<td>换线路、分时段对照</td>
+</tr>
+<tr>
+<td>图表实时，下单面板报价延迟</td>
+<td>券商行情订阅</td>
+<td>联系券商核对</td>
+</tr>
+<tr>
+<td>整页打不开</td>
+<td>线路或平台</td>
+<td>先看平台公告，再换线路</td>
+</tr>
+</tbody>
+</table>
+<p>登月VPN 的客户端设置和连接报错，看<a href="https://dengyue.xyz/help">官网帮助中心</a>，套餐和价格见 <a href="https://dengyue.xyz/pricing">dengyue.xyz/pricing</a>。登月VPN 是 2026 年 10 月 10 日开卖的直连线路服务。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 直连交易所，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
