@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>币安 K 线图不显示、图表一片空白：图表区和实时价格分开查 | 登月VPN 技术笔记</title>
+<meta name="description" content="币安 K 线区一片空白，先分清是图表没加载出来，还是实时价格没推过来。按先切布局、再清缓存、最后看线路的顺序排查，附按运营商推荐的线路。">
+<link rel="canonical" href="https://dengyue.xyz/blog/binance-kline-chart-blank/">
+<link rel="icon" href="icon.png" type="image/png">
+<meta name="theme-color" content="#6554f5">
+<style>:root{--purple:#6554f5;--ink:#1f1b2e;--muted:#696377;--line:#e5dff2;--bg:#fbf8f1;--card:#fff}
+@media (prefers-color-scheme: dark){:root{--ink:#ece8f6;--muted:#b5adc8;--line:#3a3550;--bg:#14121c;--card:#1d1a28;--purple:#a99cff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 64px}a{color:var(--purple);text-underline-offset:3px}
+nav.top{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}h1{font-size:1.9em;line-height:1.3;margin:.6em 0}h2{margin-top:2em}h3{margin-top:2em}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.note{background:rgba(101,84,245,.1);padding:10px 14px;border-radius:8px}.muted{color:var(--muted)}
+ul.list{list-style:none;padding:0}ul.list li{padding:10px 0;border-bottom:1px solid var(--line)}ul.list li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}</style>
+</head>
+<body><main>
+<nav class="top"><a href="./">登月VPN 技术笔记</a><a href="https://dengyue.xyz/blog/">登月VPN 博客</a><a href="https://dengyue.xyz/pricing">套餐与价格</a></nav>
+<h1>币安 K 线图不显示、图表一片空白：图表区和实时价格分开查</h1>
+<p class="note">本文原载于<a href="https://dengyue.xyz/blog/binance-kline-chart-blank/">登月VPN 博客</a>，内容与后续更新以原文为准。</p>
+<p><strong>币安 K 线区空白，先看页面其他地方：价格数字、盘口还在跳，多半是图表区没加载出来。连价格都停了，是实时推送断了。两种情况的排查顺序不一样。</strong></p>
+<p>图表没加载的，先切布局、重置图表、清缓存，再按你家运营商固定一条直连线路：电信用韩国【电信直连】01，联通用韩国【联通直连】01，移动用韩国【移动直连】01。</p>
+<h3>先判断：是图表空白，还是行情停了</h3>
+<p>币安的交易页面由几块拼成：K 线图表、盘口和成交、顶部的价格。看盘时它们靠不同的数据到达页面，所以会出现「价格在跳，图表是空的」这种情况。</p>
+<table>
+<thead>
+<tr>
+<th>你看到的</th>
+<th>更可能是</th>
+<th>去哪一节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>价格、盘口还在更新，只有 K 线区空白或一直转圈</td>
+<td>图表区没加载出来</td>
+<td>下面第一、二节</td>
+</tr>
+<tr>
+<td>K 线有历史形态，但最新一根不动，价格也停了</td>
+<td>实时推送断了</td>
+<td><a href="binance-websocket-disconnect.html">币安 WebSocket 老断开：行情推送延迟怎么查</a></td>
+</tr>
+<tr>
+<td>整个页面打不开，或一直提示网络异常</td>
+<td>连接本身的问题</td>
+<td><a href="binance-network-route.html">币安打不开、提示网络异常怎么办</a></td>
+</tr>
+</tbody>
+</table>
+<p>这篇只讲第一种。</p>
+<h3>第一步：先切布局、重置图表</h3>
+<p>币安官方帮助中心介绍了网页端的做法：登录后把鼠标放到「交易」上，点「现货」，在图表上方点「TradingView」，就能看到 K 线图和绘图工具。经典版、高级版、全屏三种布局都支持，可以随时切换（2026-10-17 核对 <a href="https://www.binance.com/en/support/faq/detail/8419126024404348a1c6e4039fbed3fe">币安官方帮助：在币安网页使用 TradingView</a>）。</p>
+<p>图表区空白时，可以按这个顺序试：</p>
+<ol>
+<li><strong>换一个布局。</strong> 经典版、高级版、全屏之间切一下，再切回来。</li>
+<li><strong>重置图表。</strong> 在图表上右键选「重置图表」（Reset Chart），或按 Alt + R。</li>
+<li><strong>换一个周期和交易对。</strong> 如果换了周期就恢复，说明是某个周期的数据没取到，换了交易对才恢复，也是同一类问题。</li>
+</ol>
+<p>重置可能清掉你加的指标和画线，有需要的先截个图记下来。</p>
+<h3>第二步：清缓存、换浏览器、关扩展</h3>
+<p>同一份官方说明里提到：清除浏览器缓存或重新安装 App 后，图表设置会恢复成默认值。按一般的网页排错思路，缓存里残留的旧数据也可能是原因，可以顺手清一下。</p>
+<ol>
+<li>清除币安网页的缓存和站点数据，重新登录。</li>
+<li>换一个浏览器试，或者开无痕窗口。无痕窗口里正常，问题多半出在原浏览器的缓存或扩展上。</li>
+<li>暂时关闭广告拦截、脚本拦截类扩展。它们可能把图表要加载的资源一并拦掉。</li>
+<li>手机 App 先升级到最新版，再重新打开交易页。</li>
+</ol>
+<p>以上几步都做完，图表还是空白，再往线路上查。</p>
+<h3>第三步：再看线路</h3>
+<p>图表要加载的内容比一行价格大得多，线路晚高峰卡顿、丢包时，更容易表现为「价格能跳，图表半天出不来」。判断办法：</p>
+<ul>
+<li><strong>只在晚上 8 点到 11 点出现，白天正常</strong>，更像线路在高峰时段变差。</li>
+<li><strong>换成手机流量、同一条线路也空白</strong>，先排除家里 Wi-Fi 的问题。流量下正常、Wi-Fi 下空白，先看路由器和宽带。</li>
+<li><strong>客户端开着自动选择、负载均衡</strong>，出口会来回换，图表加载到一半连接换了，就会卡住。固定一条线路，设置方法见 <a href="https://dengyue.xyz/help">帮助中心</a>。</li>
+</ul>
+<p>线路按你的宽带运营商来选，用币安的话，推荐这样选：</p>
+<table>
+<thead>
+<tr>
+<th>你的宽带</th>
+<th>主推</th>
+<th>也可选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电信</td>
+<td>韩国【电信直连】01</td>
+<td>日本【电信直连】01</td>
+</tr>
+<tr>
+<td>联通</td>
+<td>韩国【联通直连】01</td>
+<td>日本【联通直连】01</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>韩国【移动直连】01</td>
+<td>日本【移动直连】01</td>
+</tr>
+</tbody>
+</table>
+<p>完整的交易所对照见 <a href="exchange-route-choice.html">交易所用哪条线路：10 家交易所按电信、联通、移动选线</a>。账户和地区规则以平台为准，固定一个出口国家、少来回切换更稳妥。</p>
+<h3>一份快速排查清单</h3>
+<ol>
+<li>价格还在跳吗？在跳，是图表区的问题，不跳，看 WebSocket 那篇。</li>
+<li>切布局、重置图表（Alt + R）。</li>
+<li>清缓存，换浏览器，关拦截类扩展。</li>
+<li>对照时段和网络：晚高峰才出现、Wi-Fi 才出现，分别往线路和家里网络查。</li>
+<li>固定一条同运营商的直连线路，不用自动选择。</li>
+</ol>
+<h3>还是不显示怎么办</h3>
+<p>先确认当前选的线路和你的网络运营商对得上，换一个时段再看。页面整页打不开的情况，可以按 <a href="exchange-not-loading.html">交易所打不开、网络异常：先判断是线路还是平台</a> 逐项排查。套餐和价格以 <a href="https://dengyue.xyz/pricing">套餐页</a> 为准。</p>
+</main>
+<footer>© 2026 登月VPN DENGYUE · 直连交易所，一起登月。 · <a href="https://dengyue.xyz">dengyue.xyz</a></footer>
+</body></html>
